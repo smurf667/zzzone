@@ -1,0 +1,8 @@
+.project
+dist/
+node_modules/
+target/
+temp/
+.settings/
+.classpath
+*.log
