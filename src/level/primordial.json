@@ -1,0 +1,288 @@
+{
+  "fuelPods": [
+    {
+      "density": 1,
+      "fuel": 100,
+      "position": {
+        "x": -456,
+        "y": 315
+      }
+    },
+    {
+      "density": 1,
+      "fuel": 100,
+      "position": {
+        "x": -176,
+        "y": 264
+      }
+    },
+    {
+      "density": 0.3,
+      "fuel": 50,
+      "position": {
+        "x": -246,
+        "y": 97
+      }
+    },
+    {
+      "density": 0.3,
+      "fuel": 50,
+      "position": {
+        "x": 4,
+        "y": 97
+      }
+    },
+    {
+      "density": 0.3,
+      "fuel": 50,
+      "position": {
+        "x": 134,
+        "y": 98
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0,
+    "y": -11
+  },
+  "instructions": {
+    "success": "Let's go...",
+    "welcome": [
+      "This world is unstable, lieutenant!",
+      "We gotta get out soon."
+    ]
+  },
+  "kinematics": {
+    "actors": [],
+    "bodies": [],
+    "sensors": []
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            1349,
+            699
+          ],
+          [
+            -1196,
+            699
+          ],
+          [
+            -1196,
+            129
+          ],
+          [
+            -496,
+            129
+          ],
+          [
+            -496,
+            239
+          ],
+          [
+            -526,
+            269
+          ],
+          [
+            -456,
+            329
+          ],
+          [
+            -386,
+            269
+          ],
+          [
+            -416,
+            239
+          ],
+          [
+            -416,
+            129
+          ],
+          [
+            -256,
+            129
+          ],
+          [
+            -266,
+            99
+          ],
+          [
+            -246,
+            109
+          ],
+          [
+            -226,
+            99
+          ],
+          [
+            -236,
+            129
+          ],
+          [
+            -206,
+            129
+          ],
+          [
+            -206,
+            189
+          ],
+          [
+            -236,
+            219
+          ],
+          [
+            -176,
+            279
+          ],
+          [
+            -116,
+            219
+          ],
+          [
+            -146,
+            189
+          ],
+          [
+            -146,
+            129
+          ],
+          [
+            -6,
+            129
+          ],
+          [
+            -16,
+            99
+          ],
+          [
+            4,
+            109
+          ],
+          [
+            24,
+            99
+          ],
+          [
+            14,
+            129
+          ],
+          [
+            124,
+            129
+          ],
+          [
+            114,
+            99
+          ],
+          [
+            134,
+            109
+          ],
+          [
+            154,
+            99
+          ],
+          [
+            144,
+            129
+          ],
+          [
+            174,
+            129
+          ],
+          [
+            274,
+            129
+          ],
+          [
+            374,
+            69
+          ],
+          [
+            674,
+            69
+          ],
+          [
+            794,
+            129
+          ],
+          [
+            1349,
+            129
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-red)"
+        }
+      }
+    ],
+    "dimension": {
+      "height": 800,
+      "width": 1720,
+      "x": -768,
+      "y": -464
+    },
+    "properties": {
+      "density": 1,
+      "friction": 1,
+      "restitution": 0.5
+    }
+  },
+  "name": "Almost primordial",
+  "stations": [
+    {
+      "position": {
+        "x": -353,
+        "y": 117
+      }
+    },
+    {
+      "position": {
+        "x": 72,
+        "y": 117
+      }
+    }
+  ],
+  "steppers": [
+    {
+      "type": "meteorites",
+      "data": [
+        100,
+        20
+      ]
+    }
+  ],
+  "timeLimit": 180,
+  "zoom": 1,
+  "collector": {
+    "x": 414,
+    "y": 38
+  },
+  "rocket": {
+    "angle": 0,
+    "angularDamping": 2,
+    "userData": {
+      "requiredFuel": 300
+    },
+    "position": {
+      "x": 534,
+      "y": 67
+    }
+  },
+  "shuttle": {
+    "angle": 0,
+    "angularDamping": 2,
+    "linearDamping": 0.75,
+    "position": {
+      "x": 230,
+      "y": 126
+    },
+    "userData": {
+      "maxFuel": 1000
+    }
+  }
+}

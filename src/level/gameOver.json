@@ -1,0 +1,82 @@
+[
+  {
+    "frame": 500,
+    "start": 10,
+    "duration": 300,
+    "lines": [
+      "Per aspera ad astra!"
+    ]
+  },
+  {
+    "frame": 1000,
+    "start": 9,
+    "duration": 450,
+    "lines": [
+      "Yes, you mastered all levels.",
+	  "",
+      "I hope it's been as entertaining playing",
+      "the game as it was for me creating it."
+    ]
+  },
+  {
+    "frame": 1800,
+    "start": 9,
+    "duration": 450,
+    "lines": [
+      "My gratitude goes to my informal beta",
+      "testers Peter and Sebastian:",
+      "",
+      "Thank you!"
+    ]
+  },
+  {
+    "frame": 2600,
+    "start": 10,
+    "duration": 300,
+    "lines": [
+      "The game is using the fantastic planck.js",
+      "library - the rest is vanilla code."
+    ]
+  },
+  {
+    "frame": 3100,
+    "start": 7,
+    "duration": 500,
+    "lines": [
+      "All sound is Creative Commons licensed.",
+      "The effects were taken from freesound.org,",
+      "the ending soundtrack from soundcloud.org",
+      "",
+      "Please check the repository for details:",
+      "https://github.com/smurf667/zzzone"
+    ]
+  },
+  {
+    "frame": 3800,
+    "start": 9,
+    "duration": 400,
+    "lines": [
+      "Of course the game has its roots in the",
+      "immortal C64 game Thrust. It will put",
+      "a smile on anyone old enough to remember."
+    ]
+  },
+  {
+    "frame": 4300,
+    "start": 10,
+    "duration": 200,
+    "lines": [
+      "If you like this game...",
+      "Please spread the word!"
+    ]
+  },
+  {
+    "frame": 4700,
+    "start": 10,
+    "duration": 200,
+    "lines": [
+      "Press space to start all over",
+      "or enjoy the wild soundtrack..."
+    ]
+  }
+]

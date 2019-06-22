@@ -1,0 +1,77 @@
+{
+  "name": "Advanced training",
+  "code": "00001",
+  "instructions": {
+    "welcome": [
+      "Cadet, take the pod to the collector!",
+      "To move the barrier, activate the sensor",
+      "by shooting at it (ctrl key).",
+      "Press \u24d7 for help..."
+    ],
+    "success": "Congratulations, you graduated!"
+  },
+  "gravity": { "x": 0, "y": -10 },
+  "zoom": 1,
+  "collector": {
+    "x": -220,
+    "y": -31
+  },
+  "shuttle": {
+    "position": { "x": 0, "y": -9 },
+    "angle": 0,
+    "angularDamping": 2,
+    "linearDamping": 0.75,
+    "userData": {
+      "maxFuel": 600
+    }
+  },
+  "fuelPods": [
+    {
+      "position": { "x": 320, "y": 118 },
+      "density": 0.8
+    }
+  ],
+  "landscape": {
+    "dimension": {
+      "x": -512,
+      "y": -512,
+      "width": 1280,
+      "height": 672
+    },
+    "properties": {
+      "density": 1,
+      "friction": 1,
+      "restitution": 0.5
+    },
+    "data": [
+      {
+        "data": [ [ -1024, 512 ], [ -1024, 0 ], [ 128, 0 ], [ 128, 128 ], [ 416, 128 ], [ 416, 0 ], [ 1024, 0 ], [ 1024, 512 ] ],
+        "svgProperties": {
+          "fill": "url(#ground-red)"
+        },
+        "type": "polygon"
+      }
+    ]
+  },
+  "kinematics": {
+    "sensors": [
+      {
+        "id": "sensor1",
+        "position": { "x": 140, "y": -240 }
+      }
+    ],
+    "bodies": [
+      {
+        "id": "barrier",
+        "type": "box",
+        "data": [ 272, -6, 144, 4 ]
+      }
+    ],
+    "actors": [
+      {
+        "on": "sensor1",
+        "phases": [ "sensor1~lock(); barrier~move(236, 2.5, 0)", "sensor1~unlock(); sensor1~disable()" ]
+      }
+    ]
+  }
+}

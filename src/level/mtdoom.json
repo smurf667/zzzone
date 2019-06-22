@@ -1,0 +1,194 @@
+{
+  "fuelPods": [
+    {
+      "density": 0.3,
+      "fuel": 200,
+      "position": {
+        "x": -511,
+        "y": 41
+      }
+    },
+    {
+      "density": 0.7,
+      "fuel": 200,
+      "position": {
+        "x": -220,
+        "y": 272
+      }
+    },
+    {
+      "density": 1,
+      "fuel": 200,
+      "position": {
+        "x": 458,
+        "y": 322
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0,
+    "y": -12
+  },
+  "instructions": {
+    "success": "Mission complete!",
+    "welcome": [
+      "Collect all pods. Be aware:",
+      "They have different masses.",
+      "This world has slightly higher gravity."
+    ],
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            -45,
+            -32
+          ],
+          [
+            55,
+            -32
+          ],
+          [
+            155,
+            -31
+          ],
+          [
+            255,
+            90
+          ],
+          [
+            395,
+            211
+          ],
+          [
+            435,
+            332
+          ],
+          [
+            485,
+            332
+          ],
+          [
+            515,
+            94
+          ],
+          [
+            595,
+            25
+          ],
+          [
+            710,
+            6
+          ],
+          [
+            1100,
+            857
+          ],
+          [
+            -1010,
+            858
+          ],
+          [
+            -640,
+            229
+          ],
+          [
+            -550,
+            140
+          ],
+          [
+            -530,
+            51
+          ],
+          [
+            -490,
+            51
+          ],
+          [
+            -460,
+            231
+          ],
+          [
+            -380,
+            371
+          ],
+          [
+            -290,
+            401
+          ],
+          [
+            -240,
+            321
+          ],
+          [
+            -230,
+            281
+          ],
+          [
+            -210,
+            281
+          ],
+          [
+            -190,
+            311
+          ],
+          [
+            -160,
+            291
+          ],
+          [
+            -110,
+            111
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-blue)"
+        }
+      }
+    ],
+    "dimension": {
+      "height": 1280,
+      "width": 2048,
+      "x": -1024,
+      "y": -600
+    },
+    "properties": {
+      "density": 1,
+      "friction": 1,
+      "restitution": 0.5
+    }
+  },
+  "name": "Mount Doom",
+  "stations": [],
+  "timeLimit": 0,
+  "zoom": 1,
+  "rocket": {
+    "angle": 0,
+    "angularDamping": 2,
+    "userData": {
+      "requiredFuel": 600
+    },
+    "position": {
+      "x": 109,
+      "y": -34
+    }
+  },
+  "collector": {
+    "x": -5,
+    "y": -63
+  },
+  "shuttle": {
+    "angle": 0,
+    "angularDamping": 2,
+    "linearDamping": 0.75,
+    "position": {
+      "x": -167,
+      "y": -207
+    },
+    "userData": {
+      "maxFuel": 1200
+    }
+  }
+}

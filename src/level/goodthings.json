@@ -1,0 +1,517 @@
+{
+  "fuelPods": [
+    {
+      "density": 0.7,
+      "fuel": 100,
+      "position": {
+        "x": -745,
+        "y": 114
+      }
+    },
+    {
+      "density": 0.7,
+      "fuel": 100,
+      "position": {
+        "x": -587,
+        "y": 270
+      }
+    },
+    {
+      "density": 0.7,
+      "fuel": 100,
+      "position": {
+        "x": 191,
+        "y": 149
+      }
+    },
+    {
+      "density": 1.1,
+      "fuel": 200,
+      "position": {
+        "x": -263,
+        "y": 414
+      }
+    },
+    {
+      "density": 0.6,
+      "fuel": 75,
+      "position": {
+        "x": 214,
+        "y": 163
+      }
+    },
+    {
+      "density": 0.6,
+      "fuel": 75,
+      "position": {
+        "x": -633,
+        "y": 290
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0,
+    "y": -8
+  },
+  "instructions": {
+    "success": "Your are a space overlord!",
+    "welcome": [
+      "All good things end...",
+      "...or you!"
+    ]
+  },
+  "kinematics": {
+    "actors": [
+      {
+        "on": "sensor1",
+        "phases": [
+          "sensor1~disable(); sensor2~enable()"
+        ]
+      },
+      {
+        "on": "sensor2",
+        "phases": [
+          "sensor2~lock(); barrier~move(252, -2.5, 0)",
+          "sensor2~unlock(); sensor2~disable(); sensor3~enable()"
+        ]
+      },
+      {
+        "on": "sensor3",
+        "phases": [
+          "sensor3~lock(); barrier~move(252, 2.5, 0); valve~rotate(292, 180)",
+          "sensor3~unlock(); sensor3~disable(); sensor1~enable()"
+        ]
+      }
+    ],
+    "bodies": [
+      {
+        "data": [
+          557,
+          -9,
+          64,
+          7
+        ],
+        "id": "barrier",
+        "type": "box"
+      },
+      {
+        "data": [
+          560,
+          107,
+          40,
+          5
+        ],
+        "id": "valve",
+        "type": "box"
+      }
+    ],
+    "sensors": [
+      {
+        "enabled": true,
+        "id": "sensor1",
+        "position": {
+          "x": 748,
+          "y": 64
+        }
+      },
+      {
+        "enabled": false,
+        "id": "sensor2",
+        "position": {
+          "x": 788,
+          "y": 64
+        }
+      },
+      {
+        "enabled": false,
+        "id": "sensor3",
+        "position": {
+          "x": 828,
+          "y": 64
+        }
+      }
+    ]
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            -1406,
+            0
+          ],
+          [
+            -794,
+            0
+          ],
+          [
+            -792,
+            37
+          ],
+          [
+            -786,
+            74
+          ],
+          [
+            -776,
+            110
+          ],
+          [
+            -762,
+            145
+          ],
+          [
+            -724,
+            145
+          ],
+          [
+            -723,
+            212
+          ],
+          [
+            -698,
+            243
+          ],
+          [
+            -670,
+            273
+          ],
+          [
+            -639,
+            300
+          ],
+          [
+            -570,
+            300
+          ],
+          [
+            -568,
+            347
+          ],
+          [
+            -529,
+            367
+          ],
+          [
+            -488,
+            384
+          ],
+          [
+            -445,
+            398
+          ],
+          [
+            -401,
+            410
+          ],
+          [
+            -356,
+            418
+          ],
+          [
+            -310,
+            422
+          ],
+          [
+            -264,
+            424
+          ],
+          [
+            -218,
+            422
+          ],
+          [
+            -172,
+            418
+          ],
+          [
+            -127,
+            410
+          ],
+          [
+            -83,
+            398
+          ],
+          [
+            -40,
+            384
+          ],
+          [
+            1,
+            367
+          ],
+          [
+            40,
+            347
+          ],
+          [
+            77,
+            325
+          ],
+          [
+            111,
+            300
+          ],
+          [
+            142,
+            273
+          ],
+          [
+            170,
+            243
+          ],
+          [
+            170,
+            179
+          ],
+          [
+            216,
+            179
+          ],
+          [
+            234,
+            145
+          ],
+          [
+            248,
+            110
+          ],
+          [
+            258,
+            74
+          ],
+          [
+            264,
+            37
+          ],
+          [
+            266,
+            0
+          ],
+          [
+            348,
+            0
+          ],
+          [
+            350,
+            220
+          ],
+          [
+            492,
+            220
+          ],
+          [
+            494,
+            0
+          ],
+          [
+            516,
+            0
+          ],
+          [
+            518,
+            220
+          ],
+          [
+            605,
+            220
+          ],
+          [
+            602,
+            0
+          ],
+          [
+            624,
+            0
+          ],
+          [
+            626,
+            220
+          ],
+          [
+            998,
+            220
+          ],
+          [
+            1000,
+            40
+          ],
+          [
+            682,
+            40
+          ],
+          [
+            709,
+            0
+          ],
+          [
+            1591,
+            0
+          ],
+          [
+            1593,
+            810
+          ],
+          [
+            -1405,
+            810
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-grey)"
+        }
+      }
+    ],
+    "dimension": {
+      "height": 1280,
+      "width": 2144,
+      "x": -1024,
+      "y": -800
+    },
+    "properties": {
+      "density": 1,
+      "friction": 1,
+      "restitution": 0.5
+    }
+  },
+  "name": "All good things",
+  "stations": [
+    {
+      "position": {
+        "x": 961,
+        "y": 208
+      }
+    }
+  ],
+  "steppers": [
+    {
+      "type": "missiles",
+      "data": [
+        275,
+        15
+      ]
+    },
+    {
+      "type": "meteorites",
+      "data": [
+        115,
+        13
+      ]
+    },
+    {
+      "type": "dystopia",
+      "data": [
+        0.25,
+        0.005,
+        2
+      ]
+    },
+    {
+      "type": "meteorites",
+      "data": [
+        170,
+        17
+      ]
+    },
+    {
+      "type": "gravityShift",
+      "data": [
+        0.25,
+        180,
+        23
+      ]
+    }
+  ],
+  "timeLimit": 361,
+  "zoom": 0.8,
+  "boxes": [
+    [
+      -736,
+      134
+    ],
+    [
+      -746,
+      134
+    ],
+    [
+      -756,
+      134
+    ],
+    [
+      -753,
+      124
+    ],
+    [
+      -743,
+      124
+    ],
+    [
+      -583,
+      289
+    ],
+    [
+      -593,
+      289
+    ],
+    [
+      -603,
+      289
+    ],
+    [
+      -597,
+      279
+    ],
+    [
+      -587,
+      279
+    ],
+    [
+      176,
+      168
+    ],
+    [
+      186,
+      168
+    ],
+    [
+      196,
+      168
+    ],
+    [
+      181,
+      158
+    ],
+    [
+      191,
+      158
+    ]
+  ],
+  "rocket": {
+    "angle": 0,
+    "angularDamping": 2,
+    "userData": {
+      "requiredFuel": 400
+    },
+    "position": {
+      "x": 417,
+      "y": 211
+    }
+  },
+  "collector": {
+    "x": 561,
+    "y": 188
+  },
+  "shuttle": {
+    "angle": 0,
+    "angularDamping": 1.8,
+    "linearDamping": 0.7,
+    "position": {
+      "x": 240,
+      "y": -121
+    },
+    "userData": {
+      "maxFuel": 1500
+    }
+  }
+}

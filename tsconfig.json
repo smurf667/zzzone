@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "outDir": "dist",
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "sourceMap": false,
+    "strictNullChecks": false,
+    "target": "ES2017"
+  },
+  "compileOnSave": true
+}

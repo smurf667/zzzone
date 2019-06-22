@@ -1,0 +1,269 @@
+{
+  "fuelPods": [
+    {
+      "density": 0.8,
+      "fuel": 500,
+      "position": {
+        "x": -524,
+        "y": 862
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0,
+    "y": -8
+  },
+  "instructions": {
+    "success": "A lucky escape!",
+    "welcome": [
+      "Lieutenant, activate the machinery",
+      "and let us escape alive..."
+    ]
+  },
+  "kinematics": {
+    "actors": [
+      {
+        "on": "sensor1",
+        "phases": [
+          "sensor1~disable()",
+          "valve1~move(70, 0, 8); valve3~move(35, 0, -16); valve2~wait(100)",
+          "valve3~move(70, 0, 8); valve2~move(35, 0, -16); valve1~wait(100)",
+          "valve2~move(70, 0, 8); valve1~move(35, 0, -16); valve3~wait(100)"
+        ],
+        "repeatCount": 10
+      },
+      {
+        "on": "sensor2",
+        "phases": [
+          "sensor2~terminate(); barrier~rotate(200, -90)"
+        ]
+      }
+    ],
+    "bodies": [
+      {
+        "data": [
+          -86,
+          809,
+          18,
+          60
+        ],
+        "id": "valve1",
+        "type": "box"
+      },
+      {
+        "data": [
+          -196,
+          713,
+          18,
+          60
+        ],
+        "id": "valve2",
+        "type": "box"
+      },
+      {
+        "data": [
+          -306,
+          713,
+          18,
+          60
+        ],
+        "id": "valve3",
+        "type": "box"
+      },
+      {
+        "data": [
+          -524.5,
+          457,
+          66,
+          8
+        ],
+        "id": "barrier",
+        "type": "box"
+      }
+    ],
+    "sensors": [
+      {
+        "enabled": true,
+        "id": "sensor1",
+        "position": {
+          "x": 6,
+          "y": 743
+        }
+      },
+      {
+        "enabled": true,
+        "id": "sensor2",
+        "position": {
+          "x": -524,
+          "y": 474
+        }
+      }
+    ]
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            24,
+            721
+          ],
+          [
+            -6,
+            731
+          ],
+          [
+            -16,
+            761
+          ],
+          [
+            -66,
+            761
+          ],
+          [
+            -66,
+            651
+          ],
+          [
+            -106,
+            651
+          ],
+          [
+            -106,
+            761
+          ],
+          [
+            -176,
+            761
+          ],
+          [
+            -176,
+            651
+          ],
+          [
+            -216,
+            651
+          ],
+          [
+            -216,
+            761
+          ],
+          [
+            -286,
+            761
+          ],
+          [
+            -286,
+            651
+          ],
+          [
+            -326,
+            651
+          ],
+          [
+            -326,
+            761
+          ],
+          [
+            -456,
+            761
+          ],
+          [
+            -456,
+            451
+          ],
+          [
+            24,
+            451
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-blue)"
+        }
+      },
+      {
+        "data": [
+          [
+            907,
+            1121
+          ],
+          [
+            -1213,
+            1121
+          ],
+          [
+            -1213,
+            451
+          ],
+          [
+            -593,
+            451
+          ],
+          [
+            -593,
+            871
+          ],
+          [
+            157,
+            871
+          ],
+          [
+            157,
+            451
+          ],
+          [
+            907,
+            451
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-blue)"
+        }
+      }
+    ],
+    "dimension": {
+      "height": 1024,
+      "width": 1600,
+      "x": -960,
+      "y": -100
+    },
+    "properties": {
+      "density": 1,
+      "friction": 0.8,
+      "restitution": 0.3
+    }
+  },
+  "name": "Stampede!",
+  "stations": [],
+  "timeLimit": 0,
+  "zoom": 1.5,
+  "collector": {
+    "x": -682,
+    "y": 420
+  },
+  "rocket": {
+    "angle": 0,
+    "angularDamping": 2,
+    "userData": {
+      "requiredFuel": 500
+    },
+    "position": {
+      "x": -383,
+      "y": 449
+    }
+  },
+  "shuttle": {
+    "angle": 0,
+    "angularDamping": 2,
+    "linearDamping": 0.75,
+    "userData": {
+      "maxFuel": 900
+    },
+    "position": {
+      "x": -68,
+      "y": 374
+    }
+  }
+}
