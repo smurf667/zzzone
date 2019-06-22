@@ -1,0 +1,105 @@
+{
+  "fuelPods": [
+    {
+      "density": 1,
+      "fuel": 300,
+      "position": {
+        "x": -102,
+        "y": -233
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0,
+    "y": 8
+  },
+  "instructions": {
+    "success": "Yes, we're alive!",
+    "welcome": [
+      "It's all a matter of perspective!"
+    ]
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            775,
+            -720
+          ],
+          [
+            -775,
+            -720
+          ],
+          [
+            -775,
+            -210
+          ],
+          [
+            -485,
+            -210
+          ],
+          [
+            -165,
+            -211
+          ],
+          [
+            205,
+            -500
+          ],
+          [
+            775,
+            -210
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-red)"
+        }
+      }
+    ],
+    "dimension": {
+      "height": 1280,
+      "width": 1400,
+      "x": -672,
+      "y": -768
+    },
+    "properties": {
+      "density": 1,
+      "friction": 1,
+      "restitution": 0.5
+    }
+  },
+  "name": "Antipodal",
+  "stations": [],
+  "timeLimit": 0,
+  "zoom": 2,
+  "shuttle": {
+    "angle": -180,
+    "angularDamping": 2,
+    "linearDamping": 0.75,
+    "userData": {
+      "maxFuel": 1000
+    },
+    "position": {
+      "x": -163,
+      "y": -148
+    }
+  },
+  "collector": {
+    "angle": -180,
+    "x": -258,
+    "y": -180
+  },
+  "rocket": {
+    "angle": -180,
+    "angularDamping": 2,
+    "userData": {
+      "requiredFuel": 300
+    },
+    "position": {
+      "x": -365,
+      "y": -208
+    }
+  }
+}

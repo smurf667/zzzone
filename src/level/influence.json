@@ -1,0 +1,258 @@
+{
+  "fuelPods": [
+    {
+      "density": 1.25,
+      "fuel": 300,
+      "position": {
+        "x": -309,
+        "y": 119
+      }
+    },
+    {
+      "density": 0.75,
+      "fuel": 200,
+      "position": {
+        "x": -97,
+        "y": 115
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0,
+    "y": -8
+  },
+  "instructions": {
+    "success": "Time for recovery...",
+    "welcome": [
+      "You'll never make Admiral,",
+      "flying under the influence!"
+    ]
+  },
+  "steppers": [
+    {
+      "type": "dystopia",
+      "data": [
+        0.5,
+        0.01
+      ]
+    }
+  ],
+  "kinematics": {
+    "actors": [
+      {
+        "on": "activator",
+        "phases": [
+          "activator~disable(); holder~wait(75)",
+          "activator~terminate(); holder~rotate(75, 55); holder~move(40, 1, 0)"
+        ]
+      }
+    ],
+    "bodies": [
+      {
+        "data": [
+          264,
+          96,
+          24,
+          6
+        ],
+        "properties": {
+          "angle": -10
+        },
+        "id": "holder",
+        "type": "box"
+      }
+    ],
+    "sensors": [
+      {
+        "enabled": true,
+        "id": "activator",
+        "position": {
+          "x": 316,
+          "y": 155
+        }
+      }
+    ]
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            294,
+            121
+          ],
+          [
+            294,
+            1
+          ],
+          [
+            344,
+            1
+          ],
+          [
+            344,
+            121
+          ],
+          [
+            244,
+            201
+          ],
+          [
+            376.5,
+            321
+          ],
+          [
+            509,
+            201
+          ],
+          [
+            406.5,
+            121
+          ],
+          [
+            404,
+            1
+          ],
+          [
+            784,
+            1
+          ],
+          [
+            784,
+            581
+          ],
+          [
+            -1016,
+            581
+          ],
+          [
+            -1016,
+            181
+          ],
+          [
+            -176,
+            181
+          ],
+          [
+            -176,
+            241
+          ],
+          [
+            -86,
+            241
+          ],
+          [
+            -86,
+            181
+          ],
+          [
+            234,
+            121
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-red)"
+        }
+      },
+      {
+        "data": [
+          [
+            234,
+            3
+          ],
+          [
+            94,
+            3
+          ],
+          [
+            94,
+            63
+          ],
+          [
+            -6,
+            63
+          ],
+          [
+            -106,
+            133
+          ],
+          [
+            -206,
+            63
+          ],
+          [
+            -306,
+            133
+          ],
+          [
+            -406,
+            63
+          ],
+          [
+            -1016,
+            63
+          ],
+          [
+            -1016,
+            163
+          ],
+          [
+            -86,
+            163
+          ],
+          [
+            234,
+            103
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-red)"
+        }
+      }
+    ],
+    "dimension": {
+      "height": 1024,
+      "width": 1280,
+      "x": -700,
+      "y": -600
+    },
+    "properties": {
+      "density": 1,
+      "friction": 0.9,
+      "restitution": 0.5
+    }
+  },
+  "name": "Under the influence",
+  "stations": [],
+  "timeLimit": 0,
+  "zoom": 1.75,
+  "collector": {
+    "x": -131,
+    "y": 210
+  },
+  "rocket": {
+    "angle": 0,
+    "angularDamping": 2,
+    "userData": {
+      "requiredFuel": 500
+    },
+    "position": {
+      "x": 28,
+      "y": 61
+    }
+  },
+  "shuttle": {
+    "angle": 0,
+    "angularDamping": 2,
+    "linearDamping": 0.75,
+    "position": {
+      "x": 163,
+      "y": 0
+    },
+    "userData": {
+      "maxFuel": 1000
+    }
+  }
+}

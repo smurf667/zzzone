@@ -1,0 +1,55 @@
+{
+  "name": "Basic training",
+  "code": "00000",
+  "instructions": {
+    "welcome": [
+      "Welcome to basic training, cadet!",
+      "Take the fuel pod to the collector!",
+      "Press \u24d7 for help..."
+    ],
+    "success": "Training complete."
+  },
+  "gravity": { "x": 0, "y": -8 },
+  "zoom": 1.5,
+  "collector": {
+    "x": -220,
+    "y": -31
+  },
+  "shuttle": {
+    "position": { "x": 0, "y": -9 },
+    "angle": 0,
+    "angularDamping": 2,
+    "linearDamping": 0.75,
+    "userData": {
+      "maxFuel": 300
+    }
+  },
+  "fuelPods": [
+    {
+      "position": { "x": 200, "y": -9 },
+      "density": 0.8
+    }
+  ],
+  "landscape": {
+    "dimension": {
+      "x": -512,
+      "y": -512,
+      "width": 1024,
+      "height": 544
+    },
+    "properties": {
+      "density": 1,
+      "friction": 1,
+      "restitution": 0.5
+    },
+    "data": [
+      {
+        "data": [ [ 768, 640 ], [ -768, 640 ], [ -768, 0 ], [ 768, 0 ] ], 
+        "svgProperties": {
+          "fill": "url(#ground-blue)"
+        },
+        "type": "polygon",
+      }
+    ]
+  }
+}

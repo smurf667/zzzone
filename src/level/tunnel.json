@@ -1,0 +1,370 @@
+{
+  "fuelPods": [
+    {
+      "density": 0.66,
+      "fuel": 100,
+      "position": {
+        "x": -277,
+        "y": 438
+      }
+    },
+    {
+      "density": 0.66,
+      "fuel": 100,
+      "position": {
+        "x": -256,
+        "y": 438
+      }
+    },
+    {
+      "density": 0.66,
+      "fuel": 100,
+      "position": {
+        "x": -282,
+        "y": 608
+      }
+    },
+    {
+      "density": 0.66,
+      "fuel": 100,
+      "position": {
+        "x": -262,
+        "y": 608
+      }
+    },
+    {
+      "density": 0.66,
+      "fuel": 100,
+      "position": {
+        "x": -241,
+        "y": 608
+      }
+    },
+    {
+      "density": 0.66,
+      "fuel": 100,
+      "position": {
+        "x": -235,
+        "y": 438
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0,
+    "y": -9
+  },
+  "instructions": {
+    "success": "On and on we go...",
+    "welcome": [
+      "We need some combinatorics, captain!"
+    ]
+  },
+  "kinematics": {
+    "actors": [
+      {
+        "on": "sensor1",
+        "phases": [
+          "sensor1~disable(); tunnel~rotate(50, 15)"
+        ]
+      },
+      {
+        "on": "sensor2",
+        "phases": [
+          "sensor2~disable(); tunnel~rotate(50, -20)"
+        ]
+      },
+      {
+        "on": "sensor3",
+        "phases": [
+          "sensor3~disable(); tunnel~rotate(50, 32)"
+        ]
+      },
+      {
+        "on": "sensor4",
+        "phases": [
+          "sensor4~disable(); tunnel~rotate(50, 5)"
+        ]
+      },
+      {
+        "on": "sensor5",
+        "phases": [
+          "sensor5~disable(); tunnel~rotate(50, -11)"
+        ]
+      },
+      {
+        "on": "sensor6",
+        "phases": [
+          "sensor6~disable(); tunnel~rotate(50, -35)"
+        ]
+      },
+      {
+        "on": "sensor7",
+        "phases": [
+          "sensor7~disable(); tunnel~rotate(50, 26)"
+        ]
+      }
+    ],
+    "bodies": [
+      {
+        "id": "tunnel",
+        "type": "lock",
+        "data": [
+          59,
+          507,
+          128,
+          70,
+          15
+        ]
+      }
+    ],
+    "sensors": [
+      {
+        "enabled": true,
+        "id": "sensor1",
+        "position": {
+          "x": 265,
+          "y": 420
+        }
+      },
+      {
+        "enabled": true,
+        "id": "sensor2",
+        "position": {
+          "x": 279,
+          "y": 436
+        }
+      },
+      {
+        "enabled": true,
+        "id": "sensor3",
+        "position": {
+          "x": 292,
+          "y": 420
+        }
+      },
+      {
+        "enabled": true,
+        "id": "sensor4",
+        "position": {
+          "x": 306,
+          "y": 436
+        }
+      },
+      {
+        "enabled": true,
+        "id": "sensor5",
+        "position": {
+          "x": 319,
+          "y": 420
+        }
+      },
+      {
+        "enabled": true,
+        "id": "sensor6",
+        "position": {
+          "x": 535,
+          "y": 416
+        }
+      },
+      {
+        "enabled": true,
+        "id": "sensor7",
+        "position": {
+          "x": 514,
+          "y": 416
+        }
+      }
+    ]
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            551,
+            617
+          ],
+          [
+            551,
+            397
+          ],
+          [
+            151,
+            397
+          ],
+          [
+            91,
+            367
+          ],
+          [
+            31,
+            367
+          ],
+          [
+            -29,
+            397
+          ],
+          [
+            -29,
+            287
+          ],
+          [
+            -359,
+            -43
+          ],
+          [
+            -359,
+            -93
+          ],
+          [
+            -44,
+            -93
+          ],
+          [
+            -6.5,
+            -183
+          ],
+          [
+            192.25,
+            -183
+          ],
+          [
+            231,
+            -93
+          ],
+          [
+            901,
+            -93
+          ],
+          [
+            901,
+            967
+          ],
+          [
+            -779,
+            967
+          ],
+          [
+            -779,
+            -93
+          ],
+          [
+            -509,
+            -93
+          ],
+          [
+            -509,
+            -23
+          ],
+          [
+            -179,
+            307
+          ],
+          [
+            -179,
+            347
+          ],
+          [
+            -299,
+            347
+          ],
+          [
+            -299,
+            447
+          ],
+          [
+            -199,
+            447
+          ],
+          [
+            -199,
+            487
+          ],
+          [
+            -299,
+            487
+          ],
+          [
+            -299,
+            617
+          ],
+          [
+            -29,
+            617
+          ],
+          [
+            31,
+            647
+          ],
+          [
+            91,
+            647
+          ],
+          [
+            151,
+            617
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-grey)"
+        }
+      }
+    ],
+    "dimension": {
+      "height": 1400,
+      "width": 1280,
+      "x": -600,
+      "y": -600
+    },
+    "properties": {
+      "density": 1,
+      "friction": 1,
+      "restitution": 0.5
+    }
+  },
+  "name": "The tunnel",
+  "stations": [
+    {
+      "position": {
+        "x": -252,
+        "y": -105
+      }
+    },
+    {
+      "position": {
+        "x": -182,
+        "y": 605
+      }
+    }
+  ],
+  "timeLimit": 0,
+  "zoom": 1.25,
+  "shuttle": {
+    "angle": 0,
+    "angularDamping": 1.75,
+    "linearDamping": 0.66,
+    "userData": {
+      "maxFuel": 800
+    },
+    "position": {
+      "x": 278,
+      "y": 614
+    }
+  },
+  "collector": {
+    "x": -149,
+    "y": -124
+  },
+  "rocket": {
+    "angle": 0,
+    "angularDamping": 2,
+    "position": {
+      "x": 92,
+      "y": -185
+    },
+    "userData": {
+      "requiredFuel": 300
+    }
+  }
+}

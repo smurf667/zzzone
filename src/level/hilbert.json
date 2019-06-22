@@ -1,0 +1,332 @@
+{
+  "fuelPods": [
+    {
+      "density": 1.2,
+      "fuel": 350,
+      "position": {
+        "x": 451,
+        "y": 594
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0,
+    "y": -8
+  },
+  "instructions": {
+    "success": "To boldly go...",
+    "welcome": [
+      "Captain, your name isn't Hilbert,",
+      "by any chance? This place is curvy!"
+    ]
+  },
+  "kinematics": {
+    "actors": [
+      {
+        "on": "lift",
+        "phases": [
+          "lift~disable(); left~move(500, 0, 1.5); right~move(500, 0, 1.5)"
+        ]
+      },
+      {
+        "on": "prereq1",
+        "phases": [
+          "prereq1~terminate(); prereq2~enable()"
+        ]
+      },
+      {
+        "on": "prereq2",
+        "phases": [
+          "prereq2~terminate(); lift~enable()"
+        ]
+      }
+    ],
+    "bodies": [
+      {
+        "data": [
+          448,
+          251,
+          10,
+          4
+        ],
+        "id": "left",
+        "type": "box",
+        "properties": {
+          "angle": -22
+        }
+      },
+      {
+        "data": [
+          464,
+          251,
+          10,
+          4
+        ],
+        "id": "right",
+        "type": "box",
+        "properties": {
+          "angle": 22
+        }
+      }
+    ],
+    "sensors": [
+      {
+        "enabled": false,
+        "id": "lift",
+        "position": {
+          "x": 577,
+          "y": 6
+        }
+      },
+      {
+        "enabled": true,
+        "id": "prereq1",
+        "position": {
+          "x": -335,
+          "y": 226
+        }
+      },
+      {
+        "enabled": false,
+        "id": "prereq2",
+        "position": {
+          "x": -19,
+          "y": 167
+        }
+      }
+    ]
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            447,
+            79
+          ],
+          [
+            397,
+            59
+          ],
+          [
+            -233,
+            59
+          ],
+          [
+            7,
+            159
+          ],
+          [
+            -93,
+            389
+          ],
+          [
+            -263,
+            319
+          ],
+          [
+            -383,
+            619
+          ],
+          [
+            -263,
+            669
+          ],
+          [
+            -193,
+            499
+          ],
+          [
+            37,
+            589
+          ],
+          [
+            -33,
+            759
+          ],
+          [
+            87,
+            809
+          ],
+          [
+            207,
+            509
+          ],
+          [
+            27,
+            439
+          ],
+          [
+            127,
+            199
+          ],
+          [
+            357,
+            289
+          ],
+          [
+            427,
+            289
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-blue)"
+        }
+      },
+      {
+        "data": [
+          [
+            356,
+            603
+          ],
+          [
+            586,
+            605
+          ],
+          [
+            586,
+            363
+          ],
+          [
+            466,
+            101
+          ],
+          [
+            586,
+            57
+          ],
+          [
+            1186,
+            59
+          ],
+          [
+            1186,
+            1161
+          ],
+          [
+            -894,
+            1163
+          ],
+          [
+            -894,
+            55
+          ],
+          [
+            -344,
+            57
+          ],
+          [
+            -344,
+            179
+          ],
+          [
+            -134,
+            181
+          ],
+          [
+            -174,
+            271
+          ],
+          [
+            -344,
+            201
+          ],
+          [
+            -524,
+            651
+          ],
+          [
+            -224,
+            781
+          ],
+          [
+            -144,
+            601
+          ],
+          [
+            -74,
+            630
+          ],
+          [
+            -154,
+            811
+          ],
+          [
+            136,
+            931
+          ],
+          [
+            326,
+            481
+          ],
+          [
+            126,
+            401
+          ],
+          [
+            171,
+            289
+          ],
+          [
+            356,
+            361
+          ]
+        ],
+        "type": "polygon",
+        "svgProperties": {
+          "fill": "url(#ground-blue)"
+        }
+      }
+    ],
+    "dimension": {
+      "height": 1460,
+      "width": 1400,
+      "x": -540,
+      "y": -512
+    },
+    "properties": {
+      "density": 1,
+      "friction": 0.9,
+      "restitution": 0.15
+    }
+  },
+  "name": "Hilbert space",
+  "stations": [
+    {
+      "position": {
+        "x": 401,
+        "y": 592
+      }
+    }
+  ],
+  "timeLimit": 0,
+  "zoom": 1,
+  "shuttle": {
+    "angle": 0,
+    "angularDamping": 2,
+    "linearDamping": 0.75,
+    "userData": {
+      "maxFuel": 1400
+    },
+    "position": {
+      "x": 534,
+      "y": 601
+    }
+  },
+  "collector": {
+    "x": 356,
+    "y": 28
+  },
+  "rocket": {
+    "angle": 0,
+    "angularDamping": 2,
+    "userData": {
+      "requiredFuel": 350
+    },
+    "position": {
+      "x": 243,
+      "y": 57
+    }
+  }
+}

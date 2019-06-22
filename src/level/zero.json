@@ -1,0 +1,148 @@
+{
+  "fuelPods": [
+    {
+      "density": 0.25,
+      "fuel": 150,
+      "position": {
+        "x": -5,
+        "y": -14
+      }
+    },
+    {
+      "density": 0.25,
+      "fuel": 150,
+      "position": {
+        "x": 199,
+        "y": 8
+      }
+    }
+  ],
+  "gravity": {
+    "x": 0.01,
+    "y": -0.04
+  },
+  "instructions": {
+    "success": "Engage!",
+    "welcome": [
+      "Captain, the asteroid is near zero-g."
+    ]
+  },
+  "kinematics": {
+    "actors": [],
+    "bodies": [],
+    "sensors": []
+  },
+  "landscape": {
+    "data": [
+      {
+        "data": [
+          [
+            -34,
+            -16
+          ],
+          [
+            61,
+            24
+          ],
+          [
+            166,
+            24
+          ],
+          [
+            271,
+            4
+          ],
+          [
+            356,
+            64
+          ],
+          [
+            381,
+            154
+          ],
+          [
+            366,
+            184
+          ],
+          [
+            131,
+            214
+          ],
+          [
+            -104,
+            174
+          ],
+          [
+            -169,
+            134
+          ],
+          [
+            -234,
+            164
+          ],
+          [
+            -254,
+            74
+          ],
+          [
+            -214,
+            -16
+          ],
+          [
+            -144,
+            -66
+          ],
+          [
+            -114,
+            -66
+          ]
+        ],
+        "type": "polygon"
+      }
+    ],
+    "dimension": {
+      "height": 1600,
+      "width": 1400,
+      "x": -640,
+      "y": -700
+    },
+    "properties": {
+      "density": 1,
+      "friction": 1,
+      "restitution": 0.5
+    }
+  },
+  "name": "zero-g",
+  "stations": [],
+  "timeLimit": 0,
+  "zoom": 2,
+  "collector": {
+    "x": 112,
+    "y": -7
+  },
+  "rocket": {
+    "angle": 0,
+    "angularDamping": 0.01,
+    "angularVelocity": -0.25,
+    "userData": {
+      "requiredFuel": 300
+    },
+    "position": {
+      "x": -205,
+      "y": -106
+    }
+  },
+  "shuttle": {
+    "angle": 0,
+    "angularDamping": 0.095,
+    "angularVelocity": 0.3,
+    "linearDamping": 0.15,
+    "userData": {
+      "maxFuel": 500
+    },
+    "position": {
+      "x": 57,
+      "y": -183
+    }
+  }
+}
