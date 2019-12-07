@@ -1,6 +1,6 @@
 {
     "name": "zzzone",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A fun gravity game",
     "private": true,
     "main": "./dist/index",
@@ -14,14 +14,16 @@
     "author": "Jan Engehausen",
     "license": "Apache 2.0",
     "devDependencies": {
-        "typescript": "3.4.5",
-        "typedoc": "0.14.2",
+        "serialize-javascript": "2.1.1",
         "tslint": "5.16.0",
         "tslint-eslint-rules": "5.4.0",
+        "typedoc": "0.15.3",
+        "typescript": "3.4.5",
         "webpack": "4.30.0",
         "webpack-cli": "3.3.1"
     },
     "dependencies": {
+        "@types/node": "12.12.14",
         "npm": "6.9.0",
         "planck-js": "0.3.5"
     }
