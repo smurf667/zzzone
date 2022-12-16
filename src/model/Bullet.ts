@@ -1,6 +1,5 @@
 import "planck-js";
 import {ModelType} from "../LevelData";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -13,6 +12,7 @@ export class Bullet extends ModelBase {
 
   /**
    * Creates the photon torpedo.
+   *
    * @param svg the SVG representation
    * @param body the planck representation
    */
@@ -31,7 +31,7 @@ export class Bullet extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     SVGSupport.updatePosition(this.svg, this.body);
   }
 

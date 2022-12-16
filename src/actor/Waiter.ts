@@ -11,6 +11,7 @@ export class Waiter implements Step {
 
   /**
    * Creates the waiter for the given number of frames.
+   *
    * @param frames the number of frames to wait
    * @param next the next step to execute afterwards
    */
@@ -22,6 +23,7 @@ export class Waiter implements Step {
   /**
    * Returns this waiter if wait needs to continue,
    * or the next step.
+   *
    * @returns this waiter or the next step
    */
   public perform(): Step {

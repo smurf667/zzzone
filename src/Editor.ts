@@ -80,7 +80,7 @@ export class Editor {
     LevelData.init();
     SVGProcessor.init();
     this.idCounter = 0;
-    this.panel = document.querySelector("#panel") as HTMLElement;
+    this.panel = document.querySelector("#panel");
     this.panel.onkeyup = (event) => this.keyEvent(event);
     this.panel.focus();
     this.directions = new Map();
@@ -186,7 +186,7 @@ export class Editor {
     const visible = "inherit";
     const invisible = "none";
     this.addAction(ModelType.FRAGMENT, "+ ActorBody",
-      (event) => {
+      () => {
         this.activateAction((point) => {
           const actorData = {
             data: [ point.x, point.y, 20, 10 ],
@@ -206,7 +206,7 @@ export class Editor {
       },
       () => visible);
     this.addAction(ModelType.BOX, "+ Box",
-      (event) => {
+      () => {
         this.activateAction((point) => {
           const box = [ point.x, point.y ];
           const raw = this.data.raw();
@@ -225,7 +225,7 @@ export class Editor {
       },
       () => visible);
     this.addAction(ModelType.COLLECTOR, "+ Collector",
-      (event) => {
+      () => {
         this.activateAction((point) => {
           this.data.setCollector(point);
           this.objects.collector = this.processor.processCollector(this.data.collector());
@@ -234,7 +234,7 @@ export class Editor {
       },
       () => this.data.raw().collector ? invisible : visible);
     this.addAction(ModelType.FUEL_POD, "+ Fuel pod",
-      (event) => {
+      () => {
         this.activateAction((point) => {
           const pod = {
             density: 1,
@@ -250,25 +250,25 @@ export class Editor {
       },
       () => visible);
     this.addAction(ModelType.LANDSCAPE, "+ Landscape",
-        (event) => {
-          this.activateAction((point) => {
-            const path = {
-              data: [ [ point.x, point.y ], [ point.x + 30, point.y] ],
-              type: DataType.LANDSCAPE_PATH,
-            };
-            this.data.landscape().data.push(path);
-            const landscapeSvg = this.processor.processLandscape({
-              data: [ path ],
-              dimension: undefined,
-              properties: undefined,
-            })[0];
-            this.objects.landscapes.push(landscapeSvg);
-            this.bindObject(ModelType.LANDSCAPE, landscapeSvg);
-          });
-        },
-        () => visible);
+      () => {
+        this.activateAction((point) => {
+          const path = {
+            data: [ [ point.x, point.y ], [ point.x + 30, point.y] ],
+            type: DataType.LANDSCAPE_PATH,
+          };
+          this.data.landscape().data.push(path);
+          const landscapeSvg = this.processor.processLandscape({
+            data: [ path ],
+            dimension: undefined,
+            properties: undefined,
+          })[0];
+          this.objects.landscapes.push(landscapeSvg);
+          this.bindObject(ModelType.LANDSCAPE, landscapeSvg);
+        });
+      },
+      () => visible);
     this.addAction(ModelType.ROCKET, "+ Rocket",
-      (event) => {
+      () => {
         this.activateAction((point) => {
           this.data.setRocket({
             angle: 0,
@@ -284,7 +284,7 @@ export class Editor {
       },
       () => this.data.rocket() ? invisible : visible);
     this.addAction(ModelType.SENSOR, "+ Sensor",
-      (event) => {
+      () => {
         this.activateAction((point) => {
           const sensor = {
             enabled: true,
@@ -307,7 +307,7 @@ export class Editor {
       },
       () => visible);
     this.addAction(ModelType.SHUTTLE, "+ Shuttle",
-      (event) => {
+      () => {
         this.activateAction((point) => {
           this.data.setShuttle({
             angle: 0,
@@ -324,7 +324,7 @@ export class Editor {
       },
       () => this.data.shuttle() ? invisible : visible);
     this.addAction(ModelType.STATION, "+ Station",
-      (event) => {
+      () => {
         this.activateAction((point) => {
           this.data.addStation(planck.Vec2(point.x, point.y));
           const station = this.data.stations()[this.data.stations().length - 1];
@@ -423,7 +423,7 @@ export class Editor {
         }
         this.showSensorsAndActors();
         return kinematics.actors;
-      }, (s) => true));
+      }, () => true));
     edit.appendChild(HTMLSupport.createElement("p"));
     const levelChooser = HTMLSupport.createElement("select") as HTMLSelectElement;
     const all = LevelData.all();
@@ -523,7 +523,7 @@ export class Editor {
         const pos = planck.Vec2(
           parseInt(sensor.getAttributeNS(null, "cx"), 10),
           parseInt(sensor.getAttributeNS(null, "cy"), 10));
-        const perPhase: Array<Set<string>> = new Array();
+        const perPhase: Array<Set<string>> = [];
         for (const phase of actor.phases) {
           const parties: Set<string> = new Set();
           for (const instr of phase.split(";")) {
@@ -650,7 +650,7 @@ export class Editor {
       SVGSupport.removeElement(this.svg);
     }
     // create a new processor
-    const panel = document.querySelector("#panel") as HTMLElement;
+    const panel: HTMLElement = document.querySelector("#panel");
     this.processor = new SVGProcessor();
     this.svg = this.processor.root();
     this.svg.style.cursor = "inherit";
@@ -675,7 +675,7 @@ export class Editor {
         this.placeAction = undefined;
       }
     };
-    this.svg.onmouseup = (event) => this.lastClick = undefined;
+    this.svg.onmouseup = () => this.lastClick = undefined;
     panel.appendChild(this.svg);
     HTMLSupport.setStyleAttributes(panel, {
       border: "1px solid #888",
@@ -986,7 +986,7 @@ export class Editor {
       result = this.data.kinematics().sensors[idx];
       break;
     case ModelType.STATION:
-        // this just has a position and static data
+      // this just has a position and static data
       break;
     case ModelType.COLLECTOR:
       // this just has a position
@@ -1099,7 +1099,7 @@ export class Editor {
         this.data.kinematics().sensors[idx] = newData;
         break;
       case ModelType.STATION:
-          // this just has a position and static data
+        // this just has a position and static data
         break;
       case ModelType.COLLECTOR:
         // this just has a position
@@ -1291,10 +1291,10 @@ export class Editor {
       collectorPos.x += delta.x;
       collectorPos.y += delta.y;
       this.selection.svg.setAttributeNS(
-              null,
-              "transform",
-              this.selection.svg.getAttributeNS(null, "transform")
-                .replace(Editor.TRANSLATE, `translate(${collectorPos.x} ${collectorPos.y})`));
+        null,
+        "transform",
+        this.selection.svg.getAttributeNS(null, "transform")
+          .replace(Editor.TRANSLATE, `translate(${collectorPos.x} ${collectorPos.y})`));
       break;
     case ModelType.ROCKET:
       const rocketPos = this.data.rocket().position;
@@ -1477,7 +1477,7 @@ export class Editor {
     if (!this.data) {
       return;
     }
-    const old = this.svg.querySelector("#leveldimensions") as SVGElement;
+    const old: SVGElement = this.svg.querySelector("#leveldimensions");
     if (old) {
       SVGSupport.removeElement(old);
     }

@@ -1,7 +1,6 @@
 import "planck-js";
 import {ModelType} from "../LevelData";
 import {PlanckProcessor} from "../PlanckProcessor";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -20,6 +19,7 @@ export class Missile extends ModelBase {
 
   /**
    * Creates the missile.
+   *
    * @param svg the SVG representation
    * @param body the planck representation
    */
@@ -31,7 +31,7 @@ export class Missile extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     SVGSupport.updatePosition(this.svg, this.body);
   }
 
@@ -52,6 +52,7 @@ export class Missile extends ModelBase {
 
   /**
    * Records a collision.
+   *
    * @param byBullet flag to indicate whether missile was hit by bullet or not
    */
   public hit(byBullet?: boolean) {
@@ -60,6 +61,7 @@ export class Missile extends ModelBase {
 
   /**
    * Returns the missile state.
+   *
    * @returns the missile state.
    */
   public state(): MissileState {

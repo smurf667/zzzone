@@ -3,15 +3,11 @@ import {Collector} from "./LevelData";
 import {DataType} from "./LevelData";
 import {KinematicBody, KinematicsData} from "./LevelData";
 import {Landscape} from "./LevelData";
-import {LandscapeData} from "./LevelData";
 import {StationData} from "./LevelData";
-import {StepperData} from "./LevelData";
-import {StepperType} from "./LevelData";
 import {ModelType} from "./LevelData";
 import {Pod} from "./LevelData";
 import {LevelProcessor} from "./LevelProcessor";
 import {Model} from "./Model";
-import {FuelPod} from "./model/FuelPod";
 import {Meteorite} from "./model/Meteorite";
 import {PlanckProcessor} from "./PlanckProcessor";
 import {SVGSupport} from "./SVGSupport";
@@ -144,6 +140,7 @@ export class SVGProcessor implements LevelProcessor<SVGElement> {
 
   /**
    * Returns the root SVG element
+   *
    * @returns the root SVG element
    */
   public root(): SVGElement {
@@ -152,6 +149,7 @@ export class SVGProcessor implements LevelProcessor<SVGElement> {
 
   /**
    * Returns the rope SVG element
+   *
    * @returns the rope SVG element
    */
   public rope(): SVGElement {
@@ -160,6 +158,7 @@ export class SVGProcessor implements LevelProcessor<SVGElement> {
 
   /**
    * Returns the tractor beam SVG element
+   *
    * @returns the tractor beam SVG element
    */
   public beam(): SVGElement {
@@ -188,7 +187,7 @@ export class SVGProcessor implements LevelProcessor<SVGElement> {
   /**
    * @inheritdoc
    */
-  public processGravity(gravity: planck.Vec2): void {
+  public processGravity(): void {
     // do nothing
   }
 
@@ -285,7 +284,7 @@ export class SVGProcessor implements LevelProcessor<SVGElement> {
       const d = data.frame.reduce((a, point, i) => i === 0 ?
         `M ${point[0]},${point[1]}` :
         `${a} L ${point[0]},${point[1]}${i === data.frame.length - 1 ? " Z" : ""}`,
-        "");
+      "");
       group.append(SVGSupport.createElement("path", { d }));
 
       group.append(SVGSupport.createElement("path", {
@@ -339,7 +338,7 @@ export class SVGProcessor implements LevelProcessor<SVGElement> {
   /**
    * @inheritdoc
    */
-  public processTimeLimit(limit: number) {
+  public processTimeLimit() {
     // do nothing
   }
 
@@ -604,7 +603,7 @@ export class SVGProcessor implements LevelProcessor<SVGElement> {
       "stroke": "#4b4",
       "stroke-width": 1.5,
     });
-    // tslint:disable-next-line:max-line-length
+    // eslint-disable-next-line max-len
     rocket.appendChild(SVGSupport.createElement("path", { d: "M 0 -200 Q -30 -130 -35 -60 L -60 -40 L -20 0 Q -12 -30 0 -40 Q 12 -30 20 0 L 60 -40 L 35 -60 Q 30 -130 0 -200" }));
     rocket.appendChild(SVGSupport.createElement("path", { d: "M -35 -60 Q 0 -40 35 -60" }));
     rocket.appendChild(SVGSupport.createElement("circle", { cx: 0, cy: -130, r: 10 }));

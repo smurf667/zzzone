@@ -1,6 +1,5 @@
 import "planck-js";
 import {ModelType} from "../LevelData";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -13,6 +12,7 @@ export class Fragment extends ModelBase {
 
   /**
    * Creates the fragment.
+   *
    * @param svg the SVG representation
    * @param body the planck representation
    */
@@ -24,7 +24,7 @@ export class Fragment extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     SVGSupport.updatePosition(this.svg, this.body);
     this.timer--;
   }

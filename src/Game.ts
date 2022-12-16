@@ -4,10 +4,6 @@ import {Gauge} from "./Gauge";
 import {LevelData} from "./LevelData";
 import {ModelType} from "./LevelData";
 import {Menu} from "./Menu";
-import {Model} from "./Model";
-import {Box} from "./model/Box";
-import {Bullet} from "./model/Bullet";
-import {Sensor} from "./model/Sensor";
 import {PlanckProcessor} from "./PlanckProcessor";
 import {Screen} from "./Screen";
 import {Sfx} from "./Sfx";
@@ -36,11 +32,10 @@ export class Game {
     Gauge.init();
     const keys: Map<string, boolean> = new Map();
     const screen = new Screen();
-    const panel = document.querySelector("#panel") as HTMLElement;
+    const panel: HTMLElement = document.querySelector("#panel");
     panel.appendChild(screen.root());
     const menu = new Menu(screen, keys);
-    const game = this;
-    const keyHandler = (event) => {
+    const keyHandler = (event: KeyboardEvent) => {
       const keyDown = event.type === "keydown";
       // see https://keycode.info/
       keys.set(event.key, keyDown);
@@ -55,7 +50,7 @@ export class Game {
     if (process.env.NODE_ENV !== "production") {
       // debug mode: #d<level-code>
       if (window.location.hash && window.location.hash.startsWith("d", 1)) {
-        const list = LevelData.available(window.location.hash.substr(2));
+        const list = LevelData.available(window.location.hash.substring(2));
         const testLevelData = list.length > 0 ? list[list.length - 1] : LevelData.first();
         const svgProcessor = new SVGProcessor();
         document.querySelector("#panel").appendChild(svgProcessor.root());
@@ -67,7 +62,9 @@ export class Game {
           pp.initializeLevel(testLevelData);
           let shuttleBody = world.getBodyList();
           while (shuttleBody) {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const data = shuttleBody.getUserData() as any;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             if (data && data.modelType === ModelType.SHUTTLE) {
               break;
             }
@@ -76,7 +73,7 @@ export class Game {
           world.on("begin-contact", (contact) => pp.handleContact(contact));
           let destroyJoint = false;
           let showBeam = false;
-          testbed.step = (dt: number, t: number) => {
+          testbed.step = () => {
             pp.step();
             if (destroyJoint) {
               destroyJoint = false;
@@ -88,10 +85,10 @@ export class Game {
             testbed.x = shuttleBody.getWorldCenter().x;
             testbed.y = -shuttleBody.getWorldCenter().y;
           };
-          testbed.keyup = (code, char) => {
+          testbed.keyup = () => {
             showBeam = false;
           };
-          testbed.keydown = (code, char) => {
+          testbed.keydown = (code) => {
             switch (code) {
             case 32: // space
               showBeam = true;

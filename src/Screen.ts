@@ -82,6 +82,7 @@ export class Screen {
 
   /**
    * Returns the screen SVG root element.
+   *
    * @returns the screen SVG root element.
    */
   public root(): SVGElement {
@@ -109,6 +110,7 @@ export class Screen {
 
   /**
    * Underlines a text line.
+   *
    * @param line the index of the text line
    * @param flag whether to underline or not
    */
@@ -118,6 +120,7 @@ export class Screen {
 
   /**
    * Shows a flash on the given line.
+   *
    * @param start the index of the text line
    */
   public flash(start: number): void {
@@ -183,6 +186,7 @@ export class Screen {
 
   /**
    * Adds gauges to the screen
+   *
    * @param gauges the gauges to add.
    */
   public addGauges(gauges: Gauge[]): void {
@@ -194,6 +198,7 @@ export class Screen {
 
   /**
    * Sets a time countdown display
+   *
    * @param time the time to display
    * @param warn whether to highlight the time
    */
@@ -215,6 +220,7 @@ export class Screen {
 
   /**
    * Sets text on the screen
+   *
    * @param start the index of the line where the text is to be placed
    * @param text the text to show
    * @param underline whether to underline the text or not
@@ -232,6 +238,7 @@ export class Screen {
 
   /**
    * Animates the given texts.
+   *
    * @param start the index of the starting line
    * @param delay the duration the text should be shown
    * @param texts the texts to show
@@ -242,6 +249,7 @@ export class Screen {
 
   /**
    * Animates the given texts and performs some action afterwards.
+   *
    * @param onEnd an action to perform after the texts were shown
    * @param start the index of the starting line
    * @param delay the duration the text should be shown
@@ -262,6 +270,7 @@ export class Screen {
 
   /**
    * Places the given background text
+   *
    * @param text the text to show
    * @param onEnd the action to perform afterwards
    */
@@ -271,6 +280,7 @@ export class Screen {
 
   /**
    * Animates a fading text
+   *
    * @param start the index of the starting line
    * @param text the text to show
    * @param delay the duration the text should be shown
@@ -281,6 +291,7 @@ export class Screen {
 
   /**
    * Animates a fading text and performs some action afterwards.
+   *
    * @param onEnd an action to perform after the text was shown
    * @param start the index of the starting line
    * @param text the text to show
@@ -299,6 +310,7 @@ export class Screen {
 
   /**
    * Fades the given lines and then performs some action
+   *
    * @param onEnd the action to perform afterwards
    * @param lines the line indices to fade
    */
@@ -317,6 +329,7 @@ export class Screen {
 
   /**
    * Displays a 3..2..1 countdown and performs some action afterwards.
+   *
    * @param start the number for the countdown start
    * @param onEnd the action to perform afterwards
    */
@@ -332,6 +345,7 @@ export class Screen {
 
   /**
    * Finds a free line to display text on
+   *
    * @param start the starting index
    * @param direction the direction to look for a free line (1/-1)
    * @return a free line index, if any

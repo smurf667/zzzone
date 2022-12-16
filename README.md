@@ -22,7 +22,7 @@ Make sure the dependencies are resolved by running `npm install`.
 Then execute
 
 	npm run build --production
-	
+
 to build the game. Open `src/index.html` in a browser; this will run the game.
 
 ## Running the game in debug mode

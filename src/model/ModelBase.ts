@@ -1,7 +1,7 @@
 import "planck-js";
 import {ModelType} from "../LevelData";
 import {Model, ModelInfo} from "../Model";
-import {PlanckProcessor} from "../PlanckProcessor";
+import { PlanckProcessor } from "../PlanckProcessor";
 import {SVGSupport} from "../SVGSupport";
 
 /**
@@ -14,6 +14,7 @@ export abstract class ModelBase implements Model {
 
   /**
    * Creates the model instance.
+   *
    * @param body the planck representation
    * @param svg the SVG representation
    * @param type the model type
@@ -40,8 +41,11 @@ export abstract class ModelBase implements Model {
   /**
    * Removes the model from the planck world
    * and its graphical representation.
+   *
    * @param world the current world
+   * @param processor the current processor
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public destroy(world: planck.World, processor: PlanckProcessor): void {
     SVGSupport.removeElement(this.svg);
     world.destroyBody(this.body);
@@ -49,6 +53,7 @@ export abstract class ModelBase implements Model {
 
   /**
    * Returns the model elements.
+   *
    * @returns the planck body and its graphical representation.
    */
   public elements(): ModelInfo {

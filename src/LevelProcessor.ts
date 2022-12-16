@@ -5,7 +5,6 @@ import {Landscape} from "./LevelData";
 import {ModelType} from "./LevelData";
 import {Pod} from "./LevelData";
 import {StationData} from "./LevelData";
-import {StepperData} from "./LevelData";
 import {Model} from "./Model";
 
 /**
@@ -25,18 +24,21 @@ export interface LevelProcessor<T> {
 
   /**
    * Fires a bullet
+   *
    * @returns depending on the processor, the shooting result
    */
   shoot(): T;
 
   /**
    * Processes the gravity information of a level.
+   *
    * @param gravity the gravity information
    */
   processGravity(gravity: planck.Vec2): void;
 
   /**
    * Processes the landscape information of a level.
+   *
    * @param data the landscape information
    * @returns the processing result
    */
@@ -74,6 +76,7 @@ export interface LevelProcessor<T> {
 
   /**
    * Processes the refuel/repair stations of the level.
+   *
    * @param data a list of the stations.
    * @returns the processing result
    */
@@ -81,6 +84,7 @@ export interface LevelProcessor<T> {
 
   /**
    * Processes a time limit on the level.
+   *
    * @param limit the time limit, if any
    */
   processTimeLimit(limit: number): void;
@@ -90,6 +94,7 @@ export interface LevelProcessor<T> {
    * This sets up the relevant information and
    * prepares for handling the kinematics when the
    * level runs.
+   *
    * @param data the (static) data
    * @returns the processing result
    */
@@ -97,6 +102,7 @@ export interface LevelProcessor<T> {
 
   /**
    * Processes boxes of the level.
+   *
    * @param data the box list
    */
   processBoxes(data: number[][]): T[];
@@ -113,6 +119,7 @@ export interface LevelProcessor<T> {
 
   /**
    * Creates a new meteorite in the level.
+   *
    * @param radius the size of the meteorite
    */
   createMeteorite(radius: number): T;

@@ -37,6 +37,7 @@ export class FuelCollector {
 
   /**
    * Returns the root SVG element of the collector.
+   *
    * @returns the root SVG element of the collector.
    */
   public root(): SVGElement {
@@ -45,6 +46,7 @@ export class FuelCollector {
 
   /**
    * Performs a single frame step
+   *
    * @param frame the frame number
    */
   public step(frame: number): void {

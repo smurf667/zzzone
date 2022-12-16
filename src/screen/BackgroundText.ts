@@ -34,7 +34,7 @@ export class BackgroundText implements Step {
   }
 
   /**
-   * {@inheritDoc
+   * {@inheritDoc}
    */
   public perform(): Step {
     this.frame++;
@@ -44,7 +44,7 @@ export class BackgroundText implements Step {
     if (this.frame === 1) {
       this.init();
     }
-    const str = this.codes.reduce((acc, c, i, a) => `${acc}${String.fromCharCode(c)}`, "");
+    const str = this.codes.reduce((acc, c) => `${acc}${String.fromCharCode(c)}`, "");
     this.svgText.textContent = str;
     if (str === this.text) {
       if (this.delay > 0) {

@@ -5,7 +5,6 @@ import {Waiter} from "../actor/Waiter";
 import {ModelType} from "../LevelData";
 import {Sfx, Sound} from "../Sfx";
 import {Step} from "../Step";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -16,6 +15,7 @@ export class BodyActor extends ModelBase {
 
   /**
    * Creates the body actor.
+   *
    * @param body the body to act on
    * @param svg the graphical representation
    */
@@ -27,13 +27,13 @@ export class BodyActor extends ModelBase {
       fixture.setUserData({ actor: true });
       fixture = fixture.getNext();
     }
-    this.step(0);
+    this.step();
   }
 
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     SVGSupport.updatePosition(this.svg, this.body);
   }
 
@@ -46,6 +46,7 @@ export class BodyActor extends ModelBase {
 
   /**
    * Moves a body.
+   *
    * @param duration the number of frames to move
    * @param vx the direction
    * @param vy the direction
@@ -58,6 +59,7 @@ export class BodyActor extends ModelBase {
 
   /**
    * Rotates a body
+   *
    * @param duration the number of frames to rotate
    * @param degrees the number of degrees to rotate
    */
@@ -68,6 +70,7 @@ export class BodyActor extends ModelBase {
 
   /**
    * Waits (doing "nothing") for a given duration
+   *
    * @param duration the wait duration
    */
   public wait(duration: number): Step {
@@ -76,6 +79,7 @@ export class BodyActor extends ModelBase {
 
   /**
    * Sets the angular velocity of a kinematic body.
+   *
    * @param velocity the angular velocity
    */
   public angularVelocity(velocity: number): Step {

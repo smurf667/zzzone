@@ -1,7 +1,6 @@
 import "planck-js";
 import {ModelType} from "../LevelData";
 import {PlanckProcessor} from "../PlanckProcessor";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -18,6 +17,7 @@ export class FuelPod extends ModelBase {
 
   /**
    * Creates the fuel pod.
+   *
    * @param svg the SVG representation
    * @param body the planck representation
    * @param fuel the amount of fuel the pod holds
@@ -33,7 +33,7 @@ export class FuelPod extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     this.body.setAwake(true); // need to make awake to interact with body actors
     SVGSupport.updatePosition(this.svg, this.body);
     if (this.fade > 0) {
@@ -88,6 +88,7 @@ export class FuelPod extends ModelBase {
 
   /**
    * Check if collision is catastrophic.
+   *
    * @returns true if collision is fatal, false otherwise
    */
   public collide(): boolean {
@@ -96,6 +97,7 @@ export class FuelPod extends ModelBase {
 
   /**
    * Empties the fuel pod.
+   *
    * @returns the fuel extracted
    */
   public empty(): number {

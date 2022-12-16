@@ -11,10 +11,11 @@ export class SVGSupport {
 
   /**
    * Creates an SVG element with the given name.
+   *
    * @param name the name of the SVG element
    * @param attrs attributes of the element, optional
    */
-  public static createElement(name: string, attrs?: any): SVGElement {
+  public static createElement(name: string, attrs?: object): SVGElement {
     const result = document.createElementNS(SVGSupport.SVG_NS, name);
     if (attrs) {
       this.setAttributes(result, attrs);
@@ -24,6 +25,7 @@ export class SVGSupport {
 
   /**
    * Removes the given element from its parent.
+   *
    * @param element the element to remove
    */
   public static removeElement(element: SVGElement): void {
@@ -34,6 +36,7 @@ export class SVGSupport {
 
   /**
    * Deletes all children for the given element.
+   *
    * @param element the element whose children to delete
    */
   public static removeChildren(element: SVGElement): void {
@@ -44,40 +47,43 @@ export class SVGSupport {
 
   /**
    * Sets attributes for the given SVG element
+   *
    * @param element the element to set the attributes on
    * @param attrs the attributes to set
    */
-  public static setAttributes(element: SVGElement, attrs: any): void {
+  public static setAttributes(element: SVGElement, attrs: object): void {
     for (const v in attrs) {
       if (attrs.hasOwnProperty(v)) {
-        element.setAttributeNS(null, v, attrs[v]);
+        element.setAttributeNS(null, v, attrs[v] as string);
       }
     }
   }
 
   /**
    * Updates the SVG representation of a planck body.
+   *
    * @param element the representation to update
    * @param body the body supplying the data
    */
   public static updatePosition(element: SVGElement, body: planck.Body): void {
     const position = body.getPosition();
     element.setAttributeNS(null, "transform",
-      // tslint:disable-next-line:max-line-length
+      // eslint-disable-next-line max-len
       `translate(${position.x * SVGProcessor.SCALE}, ${position.y * -SVGProcessor.SCALE}) rotate(${-PlanckProcessor.rad2deg(body.getAngle())})`);
   }
 
   /**
    * Creates an SVG path element
+   *
    * @param group the group to append to
    * @param coordinates the coordinates of the path
    * @param attributes path attributes, if any
    */
   public static path(group: SVGElement, coordinates: number[][], attributes?: any): SVGElement {
-    const d = coordinates.reduce((acc, coordinate, i, a) => i === 0
+    const d = coordinates.reduce((acc, coordinate, i) => i === 0
       ? `M ${coordinate[0]},${coordinate[1]}`
       : `${acc} L ${coordinate[0]},${coordinate[1]}`,
-      "");
+    "");
     const result = SVGSupport.createElement("path", { d });
     if (attributes) {
       SVGSupport.setAttributes(result, attributes);
@@ -90,15 +96,16 @@ export class SVGSupport {
 
   /**
    * Creates a closed SVG path element.
+   *
    * @param group the group to append to
    * @param coordinates the coordinates of the polygon
    * @param attributes path attributes, if any
    */
   public static polygon(group: SVGElement, coordinates: number[][], attributes?: any): SVGElement {
-    const d = coordinates.reduce((acc, coordinate, i, a) => i === 0 ?
+    const d = coordinates.reduce((acc, coordinate, i) => i === 0 ?
       `M ${coordinate[0]},${coordinate[1]}` :
       `${acc} L ${coordinate[0]},${coordinate[1]}${i === coordinates.length - 1 ? " Z" : ""}`,
-      "");
+    "");
     const result = SVGSupport.createElement("path", { d });
     if (attributes) {
       SVGSupport.setAttributes(result, attributes);
@@ -111,6 +118,7 @@ export class SVGSupport {
 
   /**
    * Creates a bezier path (for the rope).
+   *
    * @param points the control points
    */
   public static bezierPath(points: planck.Vec2[]): string {
@@ -132,12 +140,13 @@ export class SVGSupport {
       all.reduce((acc, point, i, a) => i === 0
         ? `M ${point.x},${point.y}`
         : `${acc} ${command(point, i, a)}`
-        , "");
+      , "");
     return svgPath(points, bezierCommand);
   }
 
   /**
    * Starts an animation.
+   *
    * @param element the animation element to start.
    */
   public static startAnimation(element: any): void {

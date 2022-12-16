@@ -19,6 +19,7 @@ export interface Model {
   /**
    * Removes the model from the planck world
    * and its graphical representation.
+   *
    * @param world the current world
    * @param processor the planck processor
    */
@@ -26,6 +27,7 @@ export interface Model {
 
   /**
    * Returns the model elements.
+   *
    * @returns the planck body and its graphical representation.
    */
   elements(): ModelInfo;
@@ -33,6 +35,7 @@ export interface Model {
   /**
    * Indicates the model is terminated and should be removed
    * from the world.
+   *
    * @returns true if the model should be removed from the world
    */
   terminated(): boolean;
