@@ -16,11 +16,11 @@ export class Gauge {
   private static readonly COLORS: string[] = [];
 
   private static interpolate(from: string, to: string, steps: number): string[] {
-    const result = [];
+    const result: string[] = [];
     const start = to.match(/(.{2})/g).map((str) => parseInt(str, 16));
     const end = from.match(/(.{2})/g).map((str) => parseInt(str, 16));
     let a = 0.0;
-    const hex = (index, alpha, factor) => {
+    const hex = (index: number, alpha, factor) => {
       const str = Math.round(start[index] * alpha + factor * end[index]).toString(16);
       if (str.length === 2) {
         return str;
@@ -45,6 +45,7 @@ export class Gauge {
 
   /**
    * Creates the gauge.
+   *
    * @param x position
    * @param y position
    * @param title display title
@@ -110,6 +111,7 @@ export class Gauge {
 
   /**
    * Sets the value of the gauge.
+   *
    * @param update the value to display
    */
   public setValue(update: number): void {
@@ -118,6 +120,7 @@ export class Gauge {
 
   /**
    * Returns the root SVG element of the gauge.
+   *
    * @returns the root SVG element of the gauge.
    */
   public root(): SVGElement {

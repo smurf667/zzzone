@@ -1,11 +1,9 @@
 import {Camera} from "./Camera";
-import {Gauge} from "./Gauge";
 import {Collector} from "./LevelData";
 import {DataType} from "./LevelData";
 import {Instructions} from "./LevelData";
 import {KinematicBody, KinematicsData} from "./LevelData";
 import {Landscape} from "./LevelData";
-import {LandscapeData} from "./LevelData";
 import {LevelData} from "./LevelData";
 import {ModelType} from "./LevelData";
 import {Pod} from "./LevelData";
@@ -33,7 +31,6 @@ import {GravityShifter} from "./stepper/GravityShifter";
 import {Meteorites} from "./stepper/Meteorites";
 import {Missiles} from "./stepper/Missiles";
 import {SVGProcessor} from "./SVGProcessor";
-import {SVGSupport} from "./SVGSupport";
 import {TimeLimit} from "./TimeLimit";
 
 type BodyActorFactory = (
@@ -64,6 +61,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Converts degrees to radians.
+   *
    * @param degrees the angle in degrees
    * @returns the angle in radians
    */
@@ -73,6 +71,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Converts radians to degrees.
+   *
    * @param radians the angle in degrees
    * @returns the angle in degrees
    */
@@ -186,10 +185,10 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
       });
     PlanckProcessor.CONTACT_ACTION_FACTORIES.set(
       ModelType.SHUTTLE | ModelType.ROPE,
-      (processor, modelA, modelB) => () => { /* do nothing */ });
+      () => () => { /* do nothing */ });
     PlanckProcessor.CONTACT_ACTION_FACTORIES.set(
       ModelType.FUEL_POD | ModelType.ROPE,
-      (processor, modelA, modelB) => () => { /* do nothing */ });
+      () => () => { /* do nothing */ });
     PlanckProcessor.CONTACT_ACTION_FACTORIES.set(
       ModelType.BULLET | ModelType.SENSOR,
       (processor, modelA, modelB) => () => {
@@ -199,7 +198,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
       });
     PlanckProcessor.CONTACT_ACTION_FACTORIES.set(
       ModelType.BULLET | ModelType.BOX,
-      (processor, modelA, modelB) => () => {
+      (_, modelA, modelB) => () => {
         PlanckProcessor.cast<Box>(modelA, modelB, PlanckProcessor.PREFER_BOX).hit();
       });
     PlanckProcessor.CONTACT_ACTION_FACTORIES.set(
@@ -228,13 +227,13 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
   private static readonly BODY_ACTOR_FACTORIES: Map<string, BodyActorFactory> = new Map();
   private static readonly CONTACT_ACTION_FACTORIES: Map<number, ContactActionFactory> = new Map();
   private static readonly STEPPER_FACTORIES: Map<StepperType, StepperFactory> = new Map();
-  private static readonly PREFER_BOX: ModelPreferrer = (a, b) => a instanceof Box;
-  private static readonly PREFER_BULLET: ModelPreferrer = (a, b) => a instanceof Bullet;
-  private static readonly PREFER_FUELPOD: ModelPreferrer = (a, b) => a instanceof FuelPod;
-  private static readonly PREFER_METEORITE: ModelPreferrer = (a, b) => a instanceof Meteorite;
-  private static readonly PREFER_MISSILE: ModelPreferrer = (a, b) => a instanceof Missile;
-  private static readonly PREFER_SENSOR: ModelPreferrer = (a, b) => a instanceof Sensor;
-  private static readonly PREFER_SHUTTLE: ModelPreferrer = (a, b) => a instanceof Shuttle;
+  private static readonly PREFER_BOX: ModelPreferrer = (a) => a instanceof Box;
+  private static readonly PREFER_BULLET: ModelPreferrer = (a) => a instanceof Bullet;
+  private static readonly PREFER_FUELPOD: ModelPreferrer = (a) => a instanceof FuelPod;
+  private static readonly PREFER_METEORITE: ModelPreferrer = (a) => a instanceof Meteorite;
+  private static readonly PREFER_MISSILE: ModelPreferrer = (a) => a instanceof Missile;
+  private static readonly PREFER_SENSOR: ModelPreferrer = (a) => a instanceof Sensor;
+  private static readonly PREFER_SHUTTLE: ModelPreferrer = (a) => a instanceof Shuttle;
   private static cast<T>(a: Model, b: Model, t: ModelPreferrer): T {
     return ((t(a, b) ? a : b) as any) as T;
   }
@@ -269,6 +268,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Creates the processor.
+   *
    * @param world the planck world to use
    * @param svgProcessor the SVG processor to use for SVG representation
    * @param camera the camera to use
@@ -290,6 +290,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
   /**
    * Initializes the processor for the given level data.
    * The processors calls its child SVG processor as appropriate.
+   *
    * @param data the level data
    */
   public initializeLevel(data: LevelData): void {
@@ -415,7 +416,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
     bullet.setLinearVelocity(bulletDir.mul(Math.min(24, Math.max(24, 2 + ship.getLinearVelocity().length()))));
     bullet.setLinearDamping(0);
     bullet.setAngle(Math.random());
-    const result = new Bullet(this.svgProcessor.shoot(), bullet);
+    new Bullet(this.svgProcessor.shoot(), bullet);
     Sfx.play(Sound.SHOT);
   }
 
@@ -423,7 +424,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
    * @inheritdoc
    */
   public processGravity(gravity: planck.Vec2): void {
-    this.svgProcessor.processGravity(gravity);
+    this.svgProcessor.processGravity();
     this.world.setGravity(gravity);
     this.maxAcceleration = Math.max(1, gravity.length() / 2);
   }
@@ -554,7 +555,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
         (station.frame[2][0] - station.frame[3][0]) / SVGProcessor.SCALE / 2,
         0.25));
       sensor.setSensor(true);
-      const result = new Station(svgs[i], body);
+      new Station(svgs[i], body);
     }
     return undefined;
   }
@@ -637,7 +638,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
     });
     data.sensors.forEach((sensor) => {
       const planckBody = this.world.createKinematicBody(this.vec2vec2(sensor.position));
-      const circle = planckBody.createFixture(planck.Circle(planck.Vec2.zero(), 0.75));
+      planckBody.createFixture(planck.Circle(planck.Vec2.zero(), 0.75));
       const instance = new Sensor(svgMapping.get(sensor.id), planckBody, mapping, sensor.enabled);
       mapping.set(sensor.id, instance);
     });
@@ -666,7 +667,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
         center: planck.Vec2.zero(),
         mass: 1,
       });
-      const result = new Box(info.length > 2 ? info[2] : 1, display[i], box);
+      new Box(info.length > 2 ? info[2] : 1, display[i], box);
     }
     return undefined;
   }
@@ -731,7 +732,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
       mass: radius * 4,
     });
     body.createFixture(planck.Circle(planck.Vec2(0, 0), radius));
-    const result = new Meteorite(this.svgProcessor.createMeteorite(size), body, size);
+    new Meteorite(this.svgProcessor.createMeteorite(size), body, size);
     return undefined;
   }
 
@@ -753,7 +754,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
     const sign = Math.sign(body.getLinearVelocity().x);
     body.setAngle(sign * Math.PI / 3);
     body.applyTorque(-sign * 192);
-    const result = new Missile(this.svgProcessor.createMissile(), body);
+    new Missile(this.svgProcessor.createMissile(), body);
     return undefined;
   }
 
@@ -767,6 +768,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Removes the rope connecting the shuttle with a pod, if any.
+   *
    * @param pod the fuel pod to check for rope removal
    */
   public removeRope(pod?: planck.Body): void {
@@ -777,6 +779,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Turns the shuttle left.
+   *
    * @param force the force to apply for the turn
    */
   public turnLeft(force: number): void {
@@ -785,6 +788,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Turns the shuttle right.
+   *
    * @param force the force to apply for the turn
    */
   public turnRight(force: number): void {
@@ -793,6 +797,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Accelerates the shuttle.
+   *
    * @returns flag indicating if acceleration took place
    */
   public accelerate(): boolean {
@@ -801,6 +806,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * This adds a step to be executed during the next stepping.
+   *
    * @param step the step to add
    */
   public addSteps(step: Step) {
@@ -886,6 +892,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Indicates if the player is still alive.
+   *
    * @returns true if game can continue, false otherwise
    */
   public alive(): boolean {
@@ -894,6 +901,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
 
   /**
    * Zooms the camera.
+   *
    * @param factor the factor to zoom.
    * @returns the current camera zoom
    */
@@ -907,6 +915,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
    * A stepper can contribute to each frame of the level.
    * Note: This is not an interface method of LevelProcessor, as the
    * SVG variant won't contribute directly.
+   *
    * @param data the stepper configuration used in the level
    */
   private processSteppers(data: StepperData[]): void {
@@ -928,7 +937,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
     }
   }
 
-  private actionPodInCollector(pod: FuelPod, other?: Model): void {
+  private actionPodInCollector(pod: FuelPod): void {
     pod.captured();
     this.removeRope();
     if (this.success !== undefined) {
@@ -965,7 +974,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
   private actionProjectileHit(projectile: any, other: Model) {
     if (other instanceof Bullet) {
       projectile.hit(true);
-      (other as Bullet).hit();
+      (other ).hit();
     } else {
       projectile.hit();
       Sfx.play(Sound.CLICK);
@@ -979,17 +988,17 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
       return; // ignore this
     }
     if (other instanceof Bullet) {
-      (other as Bullet).hit();
+      (other ).hit();
       this.shuttle.damage(2);
       return;
     }
     if (other instanceof Meteorite) {
-      (other as Meteorite).hit();
+      (other ).hit();
       this.shuttle.damage(3);
       return;
     }
     if (other instanceof Missile) {
-      (other as Missile).hit();
+      (other ).hit();
       this.shuttle.damage(3);
       return;
     }
@@ -1021,7 +1030,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
           angularDamping: 0.5,
           linearDamping: 0.5,
         });
-        const fragment = body.createFixture(planck.Box(0.25, 0.25), 0);
+        body.createFixture(planck.Box(0.25, 0.25), 0);
         body.setMassData({
           I: 0.25,
           center: planck.Vec2.zero(),
@@ -1031,7 +1040,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
         body.setLinearVelocity(deadBody.getLinearVelocity());
         body.setAngularVelocity(deadBody.getAngularVelocity());
         body.applyTorque(128 * Math.random() - 64);
-        const result = new Fragment(fragments[offset++], body).step(0);
+        new Fragment(fragments[offset++], body).step();
       }
     }
 
@@ -1046,7 +1055,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
         angularDamping: 0.5,
         linearDamping: 0.5,
       });
-      const fragment = body.createFixture(planck.Polygon([
+      body.createFixture(planck.Polygon([
         planck.Vec2(0, 0),
         planck.Vec2(radius * Math.cos(i), radius * Math.sin(i)),
         planck.Vec2(radius * Math.cos(i + angle), radius * Math.sin(i + angle)),
@@ -1060,7 +1069,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
       body.setLinearVelocity(deadBody.getLinearVelocity());
       body.setAngularVelocity(deadBody.getAngularVelocity());
       body.applyTorque(128 * Math.random() - 64);
-      const result = new Fragment(fragments[offset++], body).step(0);
+      new Fragment(fragments[offset++], body).step();
     }
   }
 
@@ -1083,7 +1092,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
       bullet.setLinearVelocity(bulletDir.mul(4).add(deadBody.getLinearVelocity()));
       bullet.setLinearDamping(0);
       bullet.setAngle(Math.random());
-      const result = new Bullet(this.svgProcessor.shoot(), bullet).step(0);
+      new Bullet(this.svgProcessor.shoot(), bullet).step();
     }
   }
 
@@ -1107,7 +1116,7 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
       body.setAngularVelocity(deadBody.getAngularVelocity());
       body.setAngle(deadBody.getAngle());
       body.applyTorque(512 * Math.random() - 256);
-      const result = new Fragment(fragments[offset++], body).step(0);
+      new Fragment(fragments[offset++], body).step();
     }
     this.shuttle.damage(65536);
     if (this.canShoot) {
@@ -1139,13 +1148,13 @@ export class PlanckProcessor implements LevelProcessor<void>, Step {
       body.createFixture(planck.Edge(
         this.arr2vec2(coordinates[i - 1]),
         this.arr2vec2(coordinates[i])),
-        properties);
+      properties);
     }
     if (closed) {
       body.createFixture(planck.Edge(
         this.arr2vec2(coordinates[coordinates.length - 1]),
         this.arr2vec2(coordinates[0])),
-        properties);
+      properties);
     }
     return body;
   }

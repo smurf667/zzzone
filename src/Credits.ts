@@ -1,5 +1,5 @@
 import texts from "./level/gameOver.json";
-import {Menu, MenuInfo} from "./Menu";
+import {Menu} from "./Menu";
 import {Screen} from "./Screen";
 import {Sfx} from "./Sfx";
 import {Step} from "./Step";
@@ -154,7 +154,7 @@ export class Credits implements Step {
       result.svg = star;
       return result;
     };
-    const stars = [];
+    const stars: Star[] = [];
     for (let i = 0; i < 192; i++) {
       stars.push(creator());
     }

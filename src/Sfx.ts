@@ -48,6 +48,7 @@ export class Sfx {
 
   /**
    * Asynchronously plays the given sound.
+   *
    * @param sound the sound to play.
    * @param loop optional, to loop or not
    * @returns the audio element playing the sound or undefined if muted
@@ -58,7 +59,7 @@ export class Sfx {
     }
     const audio = new Audio(Sfx.sounds.get(sound));
     audio.loop = loop || false;
-    audio.play();
+    void audio.play();
     return audio;
   }
 
@@ -69,7 +70,7 @@ export class Sfx {
   public static credits(): HTMLAudioElement {
     const audio = new Audio("http://www.engehausen.de/jan/From%20The%20Dust%20-%20Interstellar%20Rush.mp3");
     audio.loop = true;
-    audio.play();
+    void audio.play();
     return audio;
   }
 
@@ -82,6 +83,7 @@ export class Sfx {
 
   /**
    * Sets the mute state.
+   *
    * @param flag the muting state.
    */
   public static mute(flag: boolean): void {

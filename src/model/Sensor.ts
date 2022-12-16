@@ -19,6 +19,7 @@ export class Sensor extends ModelBase {
 
   /**
    * Creates the sensor.
+   *
    * @param svg the representation of the sensor
    * @param body the model of the sensor
    * @param mapping ID mappings to actual instances of kinematic bodies and sensors
@@ -40,12 +41,13 @@ export class Sensor extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
-    // dummy?
+  public step(): void {
+    // dummy
   }
 
   /**
    * Adds phases to the sensor.
+   *
    * @param phases the phases to add
    * @param repeatCount the number of times to repeat the phases
    */
@@ -62,6 +64,7 @@ export class Sensor extends ModelBase {
 
   /**
    * Triggers the sensor.
+   *
    * @param processor the planck processor to use.
    */
   public trigger(processor: PlanckProcessor): void {

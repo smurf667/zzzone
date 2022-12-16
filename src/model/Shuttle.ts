@@ -37,6 +37,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Creates the shuttle.
+   *
    * @param shuttleSvg the representation of the shuttle
    * @param ropeSvg the representation of the rope between shuttle and pod
    * @param beamSvg the representation of the tractor beam
@@ -51,7 +52,7 @@ export class Shuttle extends ModelBase {
     world: planck.World,
     body: planck.Body,
     maxFuel: number,
-    ) {
+  ) {
     super(body, shuttleSvg, ModelType.SHUTTLE);
     this.maxFuel = maxFuel;
     this.rope = ropeSvg;
@@ -71,7 +72,7 @@ export class Shuttle extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     const userData: any = this.body.getUserData();
     if (this.refueling) {
       if (this.body.getLinearVelocity().length() < 0.2 &&
@@ -127,7 +128,7 @@ export class Shuttle extends ModelBase {
       const last = points.length - 1;
       points[last].sub(planck.Vec2(points[last]).sub(points[last - 1]).mul(0.75));
       SVGSupport.setAttributes(this.rope, { d: SVGSupport.bezierPath(points) });
-//      SVGSupport.setAttributes(this.rope, { d: SVGSupport.linearPath(points) });
+      //      SVGSupport.setAttributes(this.rope, { d: SVGSupport.linearPath(points) });
     }
     if (this.beamOpacity > 0) {
       this.beamOpacity -= 2;
@@ -152,6 +153,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Returns the fuel and shield gauges.
+   *
    * @returns the fuel and shield gauges.
    */
   public gauges(): Gauge[] {
@@ -160,6 +162,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Returns the planck body.
+   *
    * @returns the planck body.
    */
   public planckBody(): planck.Body {
@@ -168,6 +171,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Turns the shuttle
+   *
    * @param direction the direction to turn in (1/-1)
    */
   public turn(direction: number): void {
@@ -176,6 +180,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Indicate if landed (refueling).
+   *
    * @param flag the landing state
    */
   public land(flag: boolean): void {
@@ -184,6 +189,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Accelerates the shuttle.
+   *
    * @param maxHeight max height where acceleration is possible
    * @param factor the acceleration factor
    * @returns true if acceleration took place
@@ -224,7 +230,7 @@ export class Shuttle extends ModelBase {
         5 * Math.sin(PlanckProcessor.deg2rad(shuttleAngle - angle))).add(center);
       this.world.rayCast(center,
         p2,
-        (fixture: planck.Fixture, point: planck.Vec2, normal: planck.Vec2, fraction: number) => {
+        (fixture: planck.Fixture) => {
           const fixtureBody = fixture.getBody();
           const userData = fixtureBody.getUserData() as any;
           if (userData && userData.pickable === true && !known.has(fixtureBody)) {
@@ -239,9 +245,7 @@ export class Shuttle extends ModelBase {
         });
     }
     if (candidates.length > 0) {
-      candidates.sort((a, b) => {
-        return Math.sign(a.distance - b.distance);
-      });
+      candidates.sort((a, b) => Math.sign(a.distance - b.distance));
       this.hasPod = true;
       candidates[0].userData.pickable = false;
       const podCenter = candidates[0].body.getWorldCenter();
@@ -318,6 +322,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Returns the body of the connected pod, if any.
+   *
    * @returns the body of the connected pod, if any.
    */
   public getPodBody(): planck.Body {
@@ -327,6 +332,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Fades in the shuttle, then performs some action.
+   *
    * @param onEnd the action to perform
    */
   public fadeIn(onEnd?: () => void): void {
@@ -337,6 +343,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Fades out the shuttle, then performs some action.
+   *
    * @param onEnd the action to perform
    */
   public fadeOut(onEnd?: () => void): void {
@@ -354,6 +361,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Applies damage to the shuttle.
+   *
    * @param amount amount of damage
    */
   public damage(amount: number): boolean {
@@ -378,6 +386,7 @@ export class Shuttle extends ModelBase {
 
   /**
    * Indicates if shuttle is connected to a pod.
+   *
    * @returns true if connected
    */
   public connected(): boolean {
@@ -387,6 +396,7 @@ export class Shuttle extends ModelBase {
   /**
    * Step the tri-value into the target direction.
    * x represents the current value, y the target and z the step size.
+   *
    * @param trivalue the tri-value
    * @returns the new x value
    */

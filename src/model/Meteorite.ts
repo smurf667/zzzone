@@ -1,7 +1,6 @@
 import "planck-js";
 import {ModelType} from "../LevelData";
 import {PlanckProcessor} from "../PlanckProcessor";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -16,6 +15,7 @@ export class Meteorite extends ModelBase {
 
   /**
    * Creates the meteorite.
+   *
    * @param svg the SVG representation
    * @param body the planck representation
    * @param radius the radius of the meteorite
@@ -30,7 +30,7 @@ export class Meteorite extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     SVGSupport.updatePosition(this.svg, this.body);
     this.count -= this.delta;
     if (this.count === 0) {
@@ -55,6 +55,7 @@ export class Meteorite extends ModelBase {
 
   /**
    * Returns the radius of the meteorite.
+   *
    * @returns the radius of the meteorite.
    */
   public radius(): number {
@@ -63,6 +64,7 @@ export class Meteorite extends ModelBase {
 
   /**
    * Records a collision.
+   *
    * @param explode flag to indicate whether to explode right away
    */
   public hit(explode?: boolean) {

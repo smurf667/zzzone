@@ -15,6 +15,7 @@ export class Rotator implements Step {
 
   /**
    * Creates the rotator instance.
+   *
    * @param body the body to rotate
    * @param angle the rotation in degrees
    * @param frames the number of frames for the rotation
@@ -29,6 +30,7 @@ export class Rotator implements Step {
 
   /**
    * Performs a single frame step of the rotation.
+   *
    * @returns the rotator, if rotation needs to continue, or undefined if done
    */
   public perform(): Step {

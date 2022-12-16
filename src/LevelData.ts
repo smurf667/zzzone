@@ -171,6 +171,7 @@ export class LevelData {
 
   /**
    * Returns the level for the given code, if any.
+   *
    * @param code the code of a level
    * @returns the level for the given code, if any.
    */
@@ -180,6 +181,7 @@ export class LevelData {
 
   /**
    * Returns the first known level.
+   *
    * @returns the first known level.
    */
   public static first(): LevelData {
@@ -189,11 +191,12 @@ export class LevelData {
   /**
    * Returns a list of available levels, up to the level
    * identified by the given code.
+   *
    * @param code the code of a level
    * @returns a list of available levels, up to the level identified by the given code.
    */
   public static available(code: string): LevelData[] {
-    const result = [];
+    const result: LevelData[] = [];
     if (LevelData.levelData.has(code)) {
       for (const candidate of LevelData.levelList) {
         result.push(candidate);
@@ -206,8 +209,9 @@ export class LevelData {
   }
 
   /**
-   * Returns all know levels
-   * @returns all know levels
+   * Returns all known levels
+   *
+   * @returns all known levels
    */
   public static all(): LevelData[] {
     return LevelData.levelList;
@@ -231,10 +235,13 @@ export class LevelData {
 
   /**
    * Creates the level data based on the raw JSON input.
+   *
    * @param raw the raw JSON level information.
    */
   constructor(raw: any) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     this.json = raw;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (this.json.stations) {
       for (const station of this.json.stations) {
         station.frame = LevelData.STATION;
@@ -244,6 +251,7 @@ export class LevelData {
 
   /**
    * Returns the name of the level.
+   *
    * @return the name of the level.
    */
   public name(): string {
@@ -252,6 +260,7 @@ export class LevelData {
 
   /**
    * Returns the code of the level.
+   *
    * @return the code of the level.
    */
   public code(): string {
@@ -273,6 +282,7 @@ export class LevelData {
 
   /**
    * Returns the zoom of the level.
+   *
    * @returns the zoom of the level.
    */
   public zoom(): number {
@@ -281,6 +291,7 @@ export class LevelData {
 
   /**
    * Returns the time limit, if defined.
+   *
    * @returns the time limit, if required
    */
   public timeLimit(): number {
@@ -289,6 +300,7 @@ export class LevelData {
 
   /**
    * Returns the gravity information.
+   *
    * @returns the gravity information.
    */
   public gravity(): planck.Vec2 {
@@ -297,6 +309,7 @@ export class LevelData {
 
   /**
    * Returns the static landscape information.
+   *
    * @returns the static landscape information.
    */
   public landscape(): Landscape {
@@ -305,6 +318,7 @@ export class LevelData {
 
   /**
    * Returns instructions for the level.
+   *
    * @returns instructions for the level.
    */
   public instructions(): Instructions {
@@ -313,6 +327,7 @@ export class LevelData {
 
   /**
    * Returns the shuttle definition.
+   *
    * @returns the shuttle definition.
    */
   public shuttle(): planck.BodyDef {
@@ -321,6 +336,7 @@ export class LevelData {
 
   /**
    * Returns the rocket for our escape.
+   *
    * @returns the rocket definition.
    */
   public rocket(): planck.BodyDef {
@@ -329,6 +345,7 @@ export class LevelData {
 
   /**
    * Returns information for the fuel collector.
+   *
    * @returns the fuel collector information.
    */
   public collector(): Collector {
@@ -340,6 +357,7 @@ export class LevelData {
 
   /**
    * Returns the fuel pods of the level.
+   *
    * @returns the fuel pods of the level.
    */
   public fuelPods(): Pod[] {
@@ -348,6 +366,7 @@ export class LevelData {
 
   /**
    * Returns the refuel/repair stations.
+   *
    * @returns the refuel/repair stations.
    */
   public stations(): StationData[] {
@@ -356,6 +375,7 @@ export class LevelData {
 
   /**
    * Returns the steppers of the level, if any.
+   *
    * @return the steppers of the level, if any.
    */
   public steppers(): StepperData[] {
@@ -364,6 +384,7 @@ export class LevelData {
 
   /**
    * Returns data on the kinematic bodies, sensors and actions.
+   *
    * @returns kinematics data.
    */
   public kinematics(): KinematicsData {
@@ -372,18 +393,20 @@ export class LevelData {
 
   /**
    * Returns the boxes of the level.
+   *
    * @returns a list of positions
    */
   public boxes(): number[][] {
     return this.json.boxes || [];
   }
 
- /*
+  /*
   * Modifiers for editor...
   */
 
   /**
    * Returns the raw JSON for the level data.
+   *
    * @returns the raw JSON for the level data.
    */
   public raw(): any {
@@ -392,6 +415,7 @@ export class LevelData {
 
   /**
    * Sets the shuttle data.
+   *
    * @param data the shuttle data.
    */
   public setShuttle(data: planck.BodyDef): void {
@@ -400,6 +424,7 @@ export class LevelData {
 
   /**
    * Sets the rocket data.
+   *
    * @param data the rocket data.
    */
   public setRocket(data: planck.BodyDef): void {
@@ -408,6 +433,7 @@ export class LevelData {
 
   /**
    * Sets the collector data.
+   *
    * @param data the collector data.
    */
   public setCollector(data: planck.Vec2): void {
@@ -416,6 +442,7 @@ export class LevelData {
 
   /**
    * Adds a refuel station.
+   *
    * @param data the station data.
    */
   public addStation(data: planck.Vec2): void {

@@ -1,5 +1,4 @@
 import {PlanckProcessor} from "../PlanckProcessor";
-import {Screen} from "../Screen";
 import {Step} from "../Step";
 
 export class Dystopia implements Step {

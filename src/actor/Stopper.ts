@@ -10,6 +10,7 @@ export class Stopper implements Step {
 
   /**
    * Creates the stopper for the given body.
+   *
    * @param body the body to put into rest.
    */
   constructor(body: planck.Body) {
@@ -18,6 +19,7 @@ export class Stopper implements Step {
 
   /**
    * Sets the linear velocity to zero.
+   *
    * @returns undefined
    */
   public perform(): Step {

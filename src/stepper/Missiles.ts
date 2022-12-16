@@ -1,6 +1,5 @@
 import {PlanckProcessor} from "../PlanckProcessor";
 import {Screen} from "../Screen";
-import {Step} from "../Step";
 
 import {DeathFromAbove} from "./DeathFromAbove";
 

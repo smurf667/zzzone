@@ -1,7 +1,6 @@
 import "planck-js";
 import {ModelType} from "../LevelData";
 import {PlanckProcessor} from "../PlanckProcessor";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -14,6 +13,7 @@ export class Box extends ModelBase {
 
   /**
    * Creates the box.
+   *
    * @param hitCount the number of hits before the box is destroyed
    * @param svg the SVG representation
    * @param body the planck representation
@@ -26,7 +26,7 @@ export class Box extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     SVGSupport.updatePosition(this.svg, this.body);
   }
 

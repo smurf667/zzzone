@@ -1,14 +1,7 @@
 import "planck-js";
 import {Camera} from "./Camera";
-import {LevelData} from "./LevelData";
-import {ModelType} from "./LevelData";
-import {Menu, MenuInfo} from "./Menu";
-import {Model} from "./Model";
-import {Box} from "./model/Box";
-import {Bullet} from "./model/Bullet";
-import {Sensor} from "./model/Sensor";
+import {Menu} from "./Menu";
 import {PlanckProcessor} from "./PlanckProcessor";
-import {Screen} from "./Screen";
 import {Sfx, Sound} from "./Sfx";
 import {Step} from "./Step";
 import {SVGProcessor} from "./SVGProcessor";
@@ -29,6 +22,7 @@ export class Level implements Step {
 
   /**
    * Creates the level.
+   *
    * @param menu the menu used to run the level from.
    */
   constructor(menu: Menu) {
@@ -89,7 +83,7 @@ export class Level implements Step {
       this.menu.config().screen.showHelp();
     }
     if (this.keyDown("d")) {
-     // tslint:disable-next-line:no-console
+      // eslint-disable-next-line no-console
       console.log("svg", new XMLSerializer().serializeToString(this.svg));
     }
     if (!this.processor.perform()) {

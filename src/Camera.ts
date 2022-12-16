@@ -1,6 +1,4 @@
 import "planck-js";
-import {Dimension} from "./LevelData";
-import {ModelInfo} from "./Model";
 import {SVGProcessor} from "./SVGProcessor";
 import {SVGSupport} from "./SVGSupport";
 
@@ -25,6 +23,7 @@ export class Camera {
 
   /**
    * Creates the camera.
+   *
    * @param svgRoot the SVG the camera operates on
    * @param zoom the initial zoom factor
    */
@@ -37,6 +36,7 @@ export class Camera {
 
   /**
    * Sets the body the camera should follow.
+   *
    * @param body the body to follow
    */
   public follow(body: planck.Body): void {
@@ -73,6 +73,7 @@ export class Camera {
   /**
    * Returns the forced camera position, i.e. the camera position
    * if it is not following a body.
+   *
    * @returns the forced position - this is a modifiable object!
    */
   public center(): planck.Vec2 {
@@ -81,6 +82,7 @@ export class Camera {
 
   /**
    * Returns the top left corner of the camera view port.
+   *
    * @returns the top left corner of the camera view port.
    */
   public offset(): planck.Vec2 {

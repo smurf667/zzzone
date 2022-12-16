@@ -70,6 +70,7 @@ export class Menu implements Step {
 
   /**
    * Creates the menu using the given screen and key map.
+   *
    * @param screen the screen used for rendering purposes
    * @param keys the map of pressed keys
    */
@@ -132,6 +133,7 @@ export class Menu implements Step {
   /**
    * Returns information about the current selections and
    * other configuration of the menu.
+   *
    * @returns level, keys and screen information
    */
   public config(): MenuInfo {
@@ -144,6 +146,7 @@ export class Menu implements Step {
 
   /**
    * Handles a key event
+   *
    * @param event the key event
    */
   public keyEvent(event: KeyboardEvent): void {
@@ -214,6 +217,7 @@ export class Menu implements Step {
 
   /**
    * Selects the given line
+   *
    * @param index the index of the line
    */
   public select(index: number): void {
@@ -224,6 +228,7 @@ export class Menu implements Step {
 
   /**
    * Moves the selection up or down.
+   *
    * @param dir the selection direction (1/-1)
    */
   public move(dir: number): void {
@@ -248,6 +253,7 @@ export class Menu implements Step {
 
   /**
    * Switches the displayed page (of levels)
+   *
    * @param dir the switch direction (1/-1)
    */
   public page(dir: number): void {
@@ -283,6 +289,7 @@ export class Menu implements Step {
 
   /**
    * Resets state after returning from playing a level.
+   *
    * @returns the menu instance
    */
   public fromLevel(): Step {
@@ -295,6 +302,7 @@ export class Menu implements Step {
   /**
    * Returns a step for playing the next level, or the
    * credits if all levels have been played.
+   *
    * @returns the next step
    */
   public nextLevel(): Step {
@@ -344,9 +352,9 @@ export class Menu implements Step {
   }
 
   private spawnTexts(): void {
-    for (const i of "123") {
-      this.spawnText();
-    }
+    this.spawnText();
+    this.spawnText();
+    this.spawnText();
   }
 
   private spawnText(): void {

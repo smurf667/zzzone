@@ -1,4 +1,3 @@
-import {Dimension} from "./LevelData";
 import {Step} from "./Step";
 
 export interface Instruction {
@@ -20,6 +19,7 @@ export class Phase implements Step {
   /**
    * Creates the phase based on the instructions.
    * The next phase is also built out of the instructions.
+   *
    * @param instructions the instructions of the phase(s)
    */
   constructor(instructions: Instruction[][]) {
@@ -29,6 +29,7 @@ export class Phase implements Step {
 
   /**
    * Performs all steps of the current phase.
+   *
    * @returns the current phase if steps remain, or the next phase, if any.
    */
   public perform(): Step {

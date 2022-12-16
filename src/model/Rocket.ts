@@ -3,7 +3,6 @@ import {Gauge} from "../Gauge";
 import {ModelType} from "../LevelData";
 import {PlanckProcessor} from "../PlanckProcessor";
 import {Sfx, Sound} from "../Sfx";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -32,6 +31,7 @@ export class Rocket extends ModelBase {
 
   /**
    * Creates the rocket.
+   *
    * @param svg the SVG representation
    * @param body the planck representation
    * @param requiredFuel the amount of fuel required for launch
@@ -48,7 +48,7 @@ export class Rocket extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     SVGSupport.updatePosition(this.svg, this.body);
     if (this.state === FlightState.FLYING && this.fuel > 0) {
       if (this.requiredFuel - this.fuel < 40) {
@@ -85,6 +85,7 @@ export class Rocket extends ModelBase {
 
   /**
    * Returns the drive gauge.
+   *
    * @returns the drive gauge.
    */
   public gauge(): Gauge {
@@ -93,6 +94,7 @@ export class Rocket extends ModelBase {
 
   /**
    * Adds fuel to the rocket drive.
+   *
    * @param amount the amount to add
    * @returns true if the rocket can launch
    */
@@ -127,6 +129,7 @@ export class Rocket extends ModelBase {
 
   /**
    * Launches the rocket.
+   *
    * @param gravity the current gravity
    */
   public liftOff(gravity: planck.Vec2): void {

@@ -5,6 +5,7 @@ export interface Step {
 
   /**
    * Performs the action.
+   *
    * @returns the step for the next frame, or undefined if there is none.
    */
   perform(): Step;

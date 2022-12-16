@@ -1,6 +1,5 @@
 import "planck-js";
 import {ModelType} from "../LevelData";
-import {SVGProcessor} from "../SVGProcessor";
 import {SVGSupport} from "../SVGSupport";
 import {ModelBase} from "./ModelBase";
 
@@ -13,6 +12,7 @@ export class Station extends ModelBase {
 
   /**
    * Creates the station.
+   *
    * @param svg the SVG representation
    * @param body the planck representation
    */
@@ -23,7 +23,7 @@ export class Station extends ModelBase {
   /**
    * @inheritdoc
    */
-  public step(frame: number): void {
+  public step(): void {
     // no action required
   }
 
