@@ -48,7 +48,7 @@
         "svgProperties": {
           "fill": "url(#ground-blue)"
         },
-        "type": "polygon",
+        "type": "polygon"
       }
     ]
   }
