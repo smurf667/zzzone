@@ -4,9 +4,9 @@
 export class HTMLSupport {
 
   /**
-   * Creates an SVG element with the given name.
+   * Creates an HTML element with the given name.
    *
-   * @param name the name of the SVG element
+   * @param name the name of the HTML element
    * @param attrs attributes of the element, optional
    */
   public static createElement(name: string, attrs?: object): HTMLElement {
